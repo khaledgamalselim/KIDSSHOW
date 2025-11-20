@@ -21,6 +21,37 @@
             --light: #f8f9fa;
             --transition: all 0.3s ease;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #e83e8c 0%, #ff6b9d 100%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--gradient);
+            z-index: 1001;
+            transition: width 0.3s ease;
         }
 
         /* Reset & Base Styles */
@@ -30,9 +61,13 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Tajawal', sans-serif;
-            background: #ea02ff;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
             color: var(--dark);
             line-height: 1.7;
             overflow-x: hidden;
@@ -59,6 +94,20 @@
             font-size: 2.5rem;
             color: var(--dark);
             margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
         }
 
         .section-title p {
@@ -77,17 +126,36 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: var(--gradient);
             color: white;
+            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 25px rgba(232, 62, 140, 0.4);
         }
 
         /* Header Styles */
@@ -118,6 +186,11 @@
         .logo img {
             height: 50px;
             margin-left: 10px;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: rotate(5deg);
         }
 
         .logo-text h1 {
@@ -146,6 +219,18 @@
             font-size: 1.1rem;
             transition: var(--transition);
             position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: var(--transition);
         }
 
         nav ul li a:hover,
@@ -153,14 +238,9 @@
             color: var(--primary);
         }
 
+        nav ul li a:hover::after,
         nav ul li a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
             width: 100%;
-            height: 2px;
-            background: var(--primary);
         }
 
         .mobile-menu-btn {
@@ -170,17 +250,94 @@
             font-size: 1.5rem;
             color: var(--dark);
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary);
         }
 
         /* Packages Hero */
         .packages-hero {
             height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/packages-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(rgb(255, 0, 234), rgb(0, 0, 235)), url('images/packages-bg.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .packages-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e83e8c' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            top: 40%;
+            left: 20%;
+            animation-delay: 4s;
         }
 
         /* Packages Section */
@@ -189,21 +346,31 @@
             justify-content: center;
             margin-bottom: 40px;
             flex-wrap: wrap;
+            background: white;
+            padding: 15px;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
         }
 
         .package-tab {
             padding: 10px 25px;
             background: none;
             border: none;
-            border-bottom: 3px solid transparent;
+            border-radius: 30px;
             font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
+            margin: 0 5px;
         }
 
         .package-tab.active {
-            border-bottom: 3px solid var(--primary);
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+        }
+
+        .package-tab:not(.active):hover {
             color: var(--primary);
         }
 
@@ -220,6 +387,13 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .package-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .package-card:hover {
@@ -229,6 +403,7 @@
 
         .package-card.popular {
             border: 2px solid var(--gold);
+            transform: scale(1.05);
         }
 
         .package-card.popular::before {
@@ -243,11 +418,30 @@
             font-weight: 500;
             font-size: 0.9rem;
             z-index: 2;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .package-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .package-card:hover::after {
+            transform: scaleX(1);
         }
 
         .package-img {
             height: 200px;
             overflow: hidden;
+            position: relative;
         }
 
         .package-img img {
@@ -276,6 +470,20 @@
             color: var(--primary);
             margin-bottom: 20px;
             font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .package-price::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient);
+            transform: scaleX(0.7);
+            transform-origin: right;
         }
 
         .package-features {
@@ -286,6 +494,11 @@
             margin-bottom: 10px;
             position: relative;
             padding-right: 25px;
+            transition: var(--transition);
+        }
+
+        .package-features li:hover {
+            transform: translateX(-5px);
         }
 
         .package-features li::before {
@@ -305,6 +518,17 @@
         .custom-package {
             background: #f9f9f9;
             padding: 80px 0;
+            position: relative;
+        }
+
+        .custom-package::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
 
         /* Footer */
@@ -312,6 +536,17 @@
             background: var(--dark);
             color: white;
             padding: 60px 0 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
 
         .footer-grid {
@@ -325,6 +560,18 @@
             font-size: 1.5rem;
             margin-bottom: 20px;
             color: var(--gold);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
         }
 
         .footer-col p {
@@ -339,6 +586,7 @@
         .footer-links a {
             color: #ccc;
             transition: var(--transition);
+            display: inline-block;
         }
 
         .footer-links a:hover {
@@ -369,6 +617,16 @@
             transform: translateY(-3px);
         }
 
+        .phone-number {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .phone-number:hover {
+            color: var(--primary);
+        }
+
         .footer-bottom {
             text-align: center;
             padding: 20px 0;
@@ -377,10 +635,95 @@
             font-size: 0.9rem;
         }
 
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        /* Fade In Animation for Scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             nav ul {
                 display: none;
+                position: absolute;
+                top: 80px;
+                right: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
             }
 
             .mobile-menu-btn {
@@ -390,16 +733,53 @@
             .packages-grid {
                 grid-template-columns: 1fr;
             }
+
+            .package-card.popular {
+                transform: scale(1);
+            }
         }
 
         @media (max-width: 768px) {
             .section-title h2 {
                 font-size: 2rem;
             }
+
+            .packages-tabs {
+                flex-direction: column;
+                border-radius: 15px;
+            }
+
+            .package-tab {
+                margin: 5px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -431,6 +811,11 @@
 
     <!-- Packages Hero -->
     <section class="packages-hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <h1>باقاتنا المميزة</h1>
@@ -442,12 +827,12 @@
     <!-- Packages Section -->
     <section class="packages">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title fade-in">
                 <h2>عروضنا الخاصة</h2>
                 <p>نقدم مجموعة متنوعة من الباقات لتلبية جميع احتياجاتك</p>
             </div>
 
-            <div class="packages-tabs">
+            <div class="packages-tabs fade-in">
                 <button class="package-tab active" data-category="all">الكل</button>
                 <button class="package-tab" data-category="especially">حفلات خاصة</button>
                 <button class="package-tab" data-category="week">حفلات للسبوع</button>
@@ -456,7 +841,7 @@
 
             <div class="packages-grid">
                 <!-- Package 1 -->
-                <div class="package-card" data-category="week">
+                <div class="package-card fade-in" data-category="week">
                     <div class="package-img">
                         <img src="ديكور1.jpg" alt="باقة الأولى للسبوع">
                     </div>
@@ -469,6 +854,7 @@
                             <li> كلاون </li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
+                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
                         <div class="package-cta">
                             <a href="https://wa.me/201100624481?text=أريد الحجز على الباقة الأولى للسبوع" class="btn btn-primary">احجز الآن</a>
                         </div>
@@ -476,7 +862,7 @@
                 </div>
 
                 <!-- Package 2 -->
-                <div class="package-card popular" data-category="week">
+                <div class="package-card popular fade-in" data-category="week">
                     <div class="package-img">
                         <img src="ديكور.jpg" alt="باقة التانية للسبوع">
                     </div>
@@ -491,6 +877,7 @@
                             <li> رسم جليتر </li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
+                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
                         <div class="package-cta">
                             <a href="https://wa.me/201100624481?text=أريد الحجز على الباقة التانية للسبوع" class="btn btn-primary">احجز الآن</a>
                         </div>
@@ -498,17 +885,18 @@
                 </div>
 
                 <!-- Package 3 -->
-                <div class="package-card" data-category="week">
+                <div class="package-card fade-in" data-category="week">
                     <div class="package-img">
-                        <img src="ماسكات.jpg" alt="باقة التالتة للسبوع">
+                        <img src="ديكور11.jpg" alt="باقة التالتة للسبوع">
                     </div>
                     <div class="package-content">
                         <h3 class="package-title">باقة التالتة للسبوع</h3>
-                        <div class="package-price">3,500 ج.م</div>
+                        <div class="package-price">4,000 ج.م</div>
                         <ul class="package-features">
                             <li> DJ </li>
                             <li> 4عرايس (2 بيبي)  و شخصيتين من اختيارك</li>
                             <li> كلاون </li>
+                            <li> أراجوز </li>
                             <li> مسابقات </li>
                             <li> رسم جليتر </li>
                             <li> غوريلا </li>
@@ -516,6 +904,7 @@
                             <li> فشار 50 فرد </li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
+                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
                         <div class="package-cta">
                             <a href="https://wa.me/201100624481?text=أريد الحجز على باقة التالتة للسبوع" class="btn btn-primary">احجز الآن</a>
                         </div>
@@ -523,7 +912,7 @@
                 </div>
 
                 <!-- Package 4 -->
-                <div class="package-card" data-category="birthday">
+                <div class="package-card fade-in" data-category="birthday">
                     <div class="package-img">
                         <img src="عيد ميلاد1.png" alt="باقة عيد الميلاد">
                     </div>
@@ -532,17 +921,18 @@
                         <div class="package-price">1,500 ج.م</div>
                         <ul class="package-features">
                             <li> DJ </li>
-                            <li> عروستين </li>
+                            <li> شخصيتين من اختيارك</li>
                             <li> كلاون </li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
+                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
                         <div class="package-cta">
                             <a href="https://wa.me/201100624481?text=أريد الحجز على باقة الأولى لأعيد الميلاد" class="btn btn-primary">احجز الآن</a>
                         </div>
                     </div>
                 </div>
                 <!-- Package 5 -->
-                <div class="package-card" data-category="birthday">
+                <div class="package-card fade-in" data-category="birthday">
                     <div class="package-img">
                         <img src="عيد  ميلاد 2.png" alt="باقة عيد الميلاد">
                     </div>
@@ -551,29 +941,31 @@
                         <div class="package-price">2,500 ج.م</div>
                         <ul class="package-features">
                             <li> DJ </li>
-                            <li> عروستين </li>
+                            <li> شخصيتين من اختيارك </li>
                             <li> كلاون </li>
                             <li> مسابقات </li>
                             <li> رسم جليتر </li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
+                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
                         <div class="package-cta">
                             <a href="https://wa.me/201100624481?text=أريد الحجز على باقة التانية لأعيد الميلاد" class="btn btn-primary">احجز الآن</a>
                         </div>
                     </div>
                 </div>
                 <!-- Package 6 -->
-                <div class="package-card popular" data-category="birthday">
+                <div class="package-card popular fade-in" data-category="birthday">
                     <div class="package-img">
                         <img src="عيد ميلا 3.png" alt="باقة عيد الميلاد">
                     </div>
                     <div class="package-content">
                         <h3 class="package-title">الباقة التالتة  لأعياد الميلاد</h3>
-                        <div class="package-price">3,500 ج.م</div>
+                        <div class="package-price">4,000 ج.م</div>
                         <ul class="package-features">
                             <li> DJ </li>
-                            <li> عروستين </li>
+                            <li> 4 شخصيات من اختيارك</li>
                             <li> كلاون </li>
+                            <li> أراجوز </li>
                             <li> مسابقات </li>
                             <li> رسم جليتر </li>
                             <li> غوريلا </li>
@@ -581,6 +973,7 @@
                             <li> فشار 50 فرد </li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
+                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
                         <div class="package-cta">
                             <a href="https://wa.me/201100624481?text=أريد الحجز على باقة التالتة لأعيد الميلاد" class="btn btn-primary">احجز الآن</a>
                         </div>
@@ -593,7 +986,7 @@
     <!-- Custom Package Section -->
     <section class="custom-package">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title fade-in">
                 <h2>باقة مخصصة</h2>
                 <p>لا تناسبك الباقات الموجودة؟ يمكننا تصميم باقة خاصة بك</p>
             </div>
@@ -664,8 +1057,8 @@
             const nav = document.querySelector('nav ul');
             
             mobileMenuBtn.addEventListener('click', function() {
-                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-                this.innerHTML = nav.style.display === 'flex' ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                nav.classList.toggle('active');
+                this.innerHTML = nav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
 
             // Header Scroll Effect
@@ -676,6 +1069,31 @@
                 } else {
                     header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
                 }
+            });
+
+            // Progress Bar
+            const progressBar = document.querySelector('.progress-bar');
+            window.addEventListener('scroll', function() {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / windowHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+
+            // Back to Top Button
+            const backToTopBtn = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('active');
+                } else {
+                    backToTopBtn.classList.remove('active');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
 
             // Package Tabs Filter
@@ -696,12 +1114,10 @@
                         if (category === 'all' || card.dataset.category === category) {
                             card.style.display = 'block';
                             setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
+                                card.classList.add('visible');
                             }, 100);
                         } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
+                            card.classList.remove('visible');
                             setTimeout(() => {
                                 card.style.display = 'none';
                             }, 300);
@@ -710,17 +1126,31 @@
                 });
             });
 
+            // Scroll Animation
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Check on load
+
             // Animate packages on load
-            packageCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.5s ease ' + (index * 0.1) + 's';
-                
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 500 + (index * 100));
-            });
+            setTimeout(() => {
+                packageCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 200);
+                });
+            }, 500);
         });
     </script>
 </body>
