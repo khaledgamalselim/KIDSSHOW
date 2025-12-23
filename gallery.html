@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIDS SHOW | معرض الأعمال</title>
+    <title>KIDS SHOW | معرض الأعمال - كريسماس</title>
     <link rel="icon" href="لوجو.png" type="image/png">
     <link rel="shortcut icon" href="لوجو.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* CSS Variables */
         :root {
@@ -19,6 +20,11 @@
             --transition: all 0.3s ease;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --gradient: linear-gradient(135deg, #e83e8c 0%, #ff6b9d 100%);
+            --christmas-red: #D32F2F;
+            --christmas-green: #388E3C;
+            --christmas-gold: #FFD700;
+            --christmas-silver: #E0E0E0;
+            --snow-white: #F5F5F5;
         }
 
         /* Custom Scrollbar */
@@ -31,12 +37,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary);
+            background: var(--christmas-red);
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+            background: var(--christmas-green);
         }
 
         /* Progress Bar */
@@ -46,9 +52,119 @@
             left: 0;
             width: 0%;
             height: 4px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red), var(--christmas-gold));
             z-index: 1001;
             transition: width 0.3s ease;
+        }
+
+        /* Snow Animation */
+        .snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) translateX(0px);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) translateX(20px);
+                opacity: 0;
+            }
+        }
+
+        /* Christmas Lights Animation */
+        .christmas-lights {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: transparent;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .light {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Christmas Tree Animation */
+        .christmas-tree {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 80px;
+            z-index: 998;
+            opacity: 0.7;
+            animation: treeSway 3s infinite alternate ease-in-out;
+        }
+
+        .tree-body {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 40px solid var(--christmas-green);
+        }
+
+        .tree-body:nth-child(1) { bottom: 0; }
+        .tree-body:nth-child(2) { bottom: 25px; transform: scale(0.8); }
+        .tree-body:nth-child(3) { bottom: 45px; transform: scale(0.6); }
+        
+        .tree-trunk {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 15px;
+            background: #8B4513;
+        }
+
+        .tree-ornament {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--christmas-red);
+            animation: ornamentGlow 2s infinite alternate;
+        }
+
+        @keyframes treeSway {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+
+        @keyframes ornamentGlow {
+            0% { box-shadow: 0 0 5px var(--christmas-red); }
+            100% { box-shadow: 0 0 15px var(--christmas-red), 0 0 20px var(--christmas-gold); }
         }
 
         /* Reset & Base Styles */
@@ -63,11 +179,26 @@
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', 'Tajawal', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
             color: var(--dark);
             line-height: 1.7;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(211, 47, 47, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(56, 142, 60, 0.05) 0%, transparent 30%);
+            z-index: -1;
         }
 
         .container {
@@ -93,6 +224,7 @@
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .section-title h2::after {
@@ -103,7 +235,7 @@
             transform: translateX(50%);
             width: 80px;
             height: 4px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red));
             border-radius: 2px;
         }
 
@@ -145,14 +277,14 @@
         }
 
         .btn-primary {
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--christmas-green), var(--christmas-red));
             color: white;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(232, 62, 140, 0.4);
+            box-shadow: 0 10px 25px rgba(211, 47, 47, 0.4);
         }
 
         /* Header Styles */
@@ -166,6 +298,11 @@
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            background-image: linear-gradient(white, white), 
+                              linear-gradient(to right, var(--christmas-green), var(--christmas-red), var(--christmas-gold));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
         }
 
         .header-container {
@@ -178,26 +315,30 @@
         .logo {
             display: flex;
             align-items: center;
+            position: relative;
         }
 
         .logo img {
             height: 50px;
             margin-left: 10px;
             transition: var(--transition);
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
         }
 
         .logo:hover img {
-            transform: rotate(5deg);
+            transform: rotate(5deg) scale(1.1);
         }
 
         .logo-text h1 {
-            color: var(--primary);
+            color: var(--christmas-red);
             font-size: 1.8rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
 
         .logo-text p {
-            color: #666;
+            color: var(--christmas-green);
             font-size: 0.9rem;
+            font-weight: 600;
         }
 
         nav ul {
@@ -212,7 +353,7 @@
         nav ul li a {
             color: var(--dark);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 1.1rem;
             transition: var(--transition);
             position: relative;
@@ -225,14 +366,14 @@
             bottom: 0;
             right: 0;
             width: 0;
-            height: 2px;
-            background: var(--gradient);
+            height: 3px;
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red));
             transition: var(--transition);
         }
 
         nav ul li a:hover,
         nav ul li a.active {
-            color: var(--primary);
+            color: var(--christmas-red);
         }
 
         nav ul li a:hover::after,
@@ -251,13 +392,14 @@
         }
 
         .mobile-menu-btn:hover {
-            color: var(--primary);
+            color: var(--christmas-red);
         }
 
         /* Gallery Hero */
         .gallery-hero {
             height: 60vh;
-            background: linear-gradient(rgb(250, 0, 250), rgb(0, 50, 250)), url('images/gallery-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('images/gallery-bg.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             text-align: center;
@@ -274,28 +416,84 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e83e8c' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(211, 47, 47, 0.1) 0%, transparent 40%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, var(--christmas-gold), var(--snow-white), var(--christmas-silver));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+            100% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 30px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
+            color: var(--snow-white);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* Floating Elements */
+        /* Christmas Hat on Title */
+        .christmas-hat {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 50px;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .hat-base {
+            width: 60px;
+            height: 30px;
+            background: var(--christmas-red);
+            border-radius: 50% 50% 0 0;
+            position: relative;
+        }
+
+        .hat-top {
+            width: 20px;
+            height: 30px;
+            background: var(--christmas-red);
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .hat-pom {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: -40px;
+            left: 20px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        /* Floating Elements with Christmas Theme */
         .floating-elements {
             position: absolute;
             top: 0;
@@ -308,9 +506,14 @@
 
         .floating-element {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             animation: float 15s infinite linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
         }
 
         .floating-element:nth-child(1) {
@@ -319,6 +522,7 @@
             top: 10%;
             left: 10%;
             animation-delay: 0s;
+            background: radial-gradient(circle, var(--christmas-red), transparent);
         }
 
         .floating-element:nth-child(2) {
@@ -327,6 +531,7 @@
             top: 60%;
             left: 80%;
             animation-delay: 2s;
+            background: radial-gradient(circle, var(--christmas-green), transparent);
         }
 
         .floating-element:nth-child(3) {
@@ -335,6 +540,7 @@
             top: 40%;
             left: 20%;
             animation-delay: 4s;
+            background: radial-gradient(circle, var(--christmas-gold), transparent);
         }
 
         /* Gallery Section */
@@ -347,6 +553,11 @@
             padding: 15px;
             border-radius: 50px;
             box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), 
+                              linear-gradient(to right, var(--christmas-green), var(--christmas-red), var(--christmas-gold));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
         }
 
         .filter-btn {
@@ -357,17 +568,54 @@
             cursor: pointer;
             border-radius: 30px;
             transition: var(--transition);
-            font-weight: 500;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--christmas-green), var(--christmas-red));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
         }
 
         .filter-btn.active {
-            background: var(--gradient);
             color: white;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .filter-btn.active::before {
+            opacity: 1;
         }
 
         .filter-btn:not(.active):hover {
-            color: var(--primary);
+            color: var(--christmas-red);
+            transform: translateY(-2px);
+        }
+
+        /* Christmas Badge on Filter */
+        .christmas-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--christmas-red);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .gallery-grid {
@@ -386,16 +634,7 @@
             opacity: 0;
             transform: translateY(30px);
             background: #f8f9fa;
-        }
-
-        .gallery-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 3px solid transparent;
         }
 
         .gallery-item::before {
@@ -405,14 +644,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            z-index: 2;
             opacity: 0;
             transition: var(--transition);
-            z-index: 1;
         }
 
         .gallery-item:hover::before {
-            opacity: 0.1;
+            opacity: 1;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--christmas-gold);
         }
 
         /* تحسين شكل الصور */
@@ -455,7 +705,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: linear-gradient(45deg, rgba(56, 142, 60, 0.8), rgba(211, 47, 47, 0.8));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -474,10 +724,11 @@
             font-size: 2.5rem;
             transform: scale(0.8);
             transition: var(--transition);
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
         .gallery-item:hover .gallery-overlay i {
-            transform: scale(1);
+            transform: scale(1) rotate(360deg);
         }
 
         /* Lightbox */
@@ -507,6 +758,9 @@
             position: relative;
             transform: scale(0.8);
             transition: transform 0.3s ease;
+            border: 5px solid transparent;
+            border-image: linear-gradient(45deg, var(--christmas-green), var(--christmas-red), var(--christmas-gold)) 1;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
         }
 
         .lightbox.active .lightbox-content {
@@ -516,25 +770,31 @@
         .lightbox img {
             max-width: 100%;
             max-height: 90vh;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+            display: block;
         }
 
         .close-lightbox {
             position: absolute;
             top: -50px;
             right: 0;
-            background: none;
+            background: var(--christmas-red);
             border: none;
             color: white;
-            font-size: 2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close-lightbox:hover {
-            color: var(--primary);
-            transform: rotate(90deg);
+            background: var(--christmas-green);
+            transform: rotate(90deg) scale(1.1);
         }
 
         .lightbox-nav {
@@ -558,10 +818,11 @@
             cursor: pointer;
             transition: var(--transition);
             backdrop-filter: blur(10px);
+            border: 2px solid var(--christmas-gold);
         }
 
         .lightbox-nav button:hover {
-            background: var(--primary);
+            background: var(--christmas-red);
             transform: scale(1.1);
         }
 
@@ -574,7 +835,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
         }
 
         .video-modal.active {
@@ -587,12 +848,17 @@
             position: relative;
             width: 80%;
             max-width: 800px;
+            border: 5px solid transparent;
+            border-image: linear-gradient(45deg, var(--christmas-green), var(--christmas-red), var(--christmas-gold)) 1;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         .video-modal video {
             width: 100%;
             height: auto;
-            border-radius: 8px;
+            display: block;
         }
 
         .close-video-modal {
@@ -604,18 +870,52 @@
             font-weight: bold;
             cursor: pointer;
             transition: var(--transition);
+            background: var(--christmas-red);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close-video-modal:hover {
-            color: var(--primary);
+            background: var(--christmas-green);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        /* Christmas Ribbon on Items */
+        .christmas-ribbon {
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            background: var(--christmas-red);
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 3;
+            transform: rotate(45deg);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .christmas-ribbon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10px;
+            border-width: 10px 10px 10px 0;
+            border-style: solid;
+            border-color: transparent var(--christmas-green) transparent transparent;
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: linear-gradient(135deg, var(--dark) 0%, #2c2c2c 100%);
             color: white;
             padding: 60px 0 0;
             position: relative;
+            overflow: hidden;
         }
 
         footer::before {
@@ -625,7 +925,23 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red), var(--christmas-gold));
+        }
+
+        footer::after {
+            content: '🎄 ✨ 🎅 🎁';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: footerSparkle 3s infinite alternate;
+        }
+
+        @keyframes footerSparkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.5; }
         }
 
         .footer-grid {
@@ -638,9 +954,10 @@
         .footer-col h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            color: var(--gold);
+            color: var(--christmas-gold);
             position: relative;
             display: inline-block;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
         .footer-col h3::after {
@@ -650,7 +967,7 @@
             right: 0;
             width: 50px;
             height: 3px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red));
         }
 
         .footer-col p {
@@ -666,11 +983,26 @@
             color: #ccc;
             transition: var(--transition);
             display: inline-block;
+            position: relative;
+            padding-right: 10px;
+        }
+
+        .footer-links a::before {
+            content: '🎁';
+            position: absolute;
+            right: -15px;
+            opacity: 0;
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
-            color: var(--primary);
-            padding-right: 5px;
+            color: var(--christmas-gold);
+            padding-right: 25px;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            right: 0;
         }
 
         .social-links {
@@ -689,11 +1021,30 @@
             margin-left: 10px;
             color: white;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--christmas-green), var(--christmas-red));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .social-links a:hover::before {
+            opacity: 1;
         }
 
         .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .footer-bottom {
@@ -702,6 +1053,8 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #ccc;
             font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
         }
 
         /* Back to Top Button */
@@ -711,19 +1064,20 @@
             left: 30px;
             width: 50px;
             height: 50px;
-            background: var(--gradient);
+            background: linear-gradient(45deg, var(--christmas-green), var(--christmas-red));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
             cursor: pointer;
             z-index: 999;
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
+            border: 2px solid var(--christmas-gold);
         }
 
         .back-to-top.active {
@@ -732,8 +1086,8 @@
         }
 
         .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4);
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
         }
 
         /* Animations */
@@ -785,6 +1139,7 @@
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
                 padding: 20px 0;
                 text-align: center;
+                border-top: 3px solid var(--christmas-red);
             }
 
             nav ul.active {
@@ -801,6 +1156,10 @@
 
             .gallery-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .christmas-tree {
+                display: none;
             }
         }
 
@@ -851,6 +1210,20 @@
     </style>
 </head>
 <body>
+    <!-- Snow Animation -->
+    <div class="snow-container" id="snowContainer"></div>
+
+    <!-- Christmas Lights -->
+    <div class="christmas-lights" id="christmasLights"></div>
+
+    <!-- Christmas Tree -->
+    <div class="christmas-tree" id="christmasTree">
+        <div class="tree-body"></div>
+        <div class="tree-body"></div>
+        <div class="tree-body"></div>
+        <div class="tree-trunk"></div>
+    </div>
+
     <!-- Progress Bar -->
     <div class="progress-bar"></div>
 
@@ -891,28 +1264,41 @@
     <!-- Gallery Hero -->
     <section class="gallery-hero">
         <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
+            <div class="floating-element">🎄</div>
+            <div class="floating-element">🎁</div>
+            <div class="floating-element">✨</div>
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1>معرض أعمالنا</h1>
-                <p>بعض من أحدث تصاميمنا التي نفخر بها</p>
+                <h1>
+                    <span class="christmas-hat">
+                        <div class="hat-base"></div>
+                        <div class="hat-top"></div>
+                        <div class="hat-pom"></div>
+                    </span>
+                    معرض أعمالنا
+                </h1>
+                <p>🎄✨🎅 أجواء كريسماس ساحرة مع أحدث تصاميمنا ✨🎁🎄</p>
+                <a href="#gallery" class="btn btn-primary" style="margin-top: 20px;">
+                    <i class="fas fa-gift"></i> استعرض المعرض
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery-section">
+    <section class="gallery-section" id="gallery">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>ألبوم الصور</h2>
-                <p>تصفح بعضاً من أحدث أعمالنا في تنظيم الحفلات والمناسبات</p>
+                <h2>🎄 ألبوم الصور 🎄</h2>
+                <p>✨ تصفح بعضاً من أحدث أعمالنا في تنظيم الحفلات والمناسبات بأجواء كريسماس مميزة ✨</p>
             </div>
 
             <div class="gallery-filter fade-in">
-                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn active" data-filter="all">
+                    الكل
+                    <span class="christmas-badge">🎁</span>
+                </button>
                 <button class="filter-btn" data-filter="Dicoration">ديكورات</button>
                 <button class="filter-btn" data-filter="Jump">نطاطة</button>
                 <button class="filter-btn" data-filter="Caractors">الشخصيات</button>
@@ -2224,8 +2610,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>KIDS SHOW</h3>
-                    <p>نقدم لكم أفضل خدمات تنظيم الحفلات والمناسبات بفريق محترف وأجواء ساحرة</p>
+                    <h3>KIDS SHOW 🎄</h3>
+                    <p>✨ نقدم لكم أفضل خدمات تنظيم الحفلات والمناسبات بفريق محترف وأجواء كريسماس ساحرة ✨</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/kidsshow721?igsh=MTkwMHVyOTg2dTNyaw%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
@@ -2256,17 +2642,17 @@
 
                 <div class="footer-col">
                     <h3>اتصل بنا</h3>
-                    <p><i class="fas fa-map-marker-alt"></i>القاهرة</p>
-                    <p><i class="fas fa-phone"></i><a href="tel:01100624481"  class="phone-number">01100624481</a></p>
-                    <p><i class="fas fa-phone"></i><a href="tel:01013272894"  class="phone-number">01013272894</a></p>
-                    <p><i class="fas fa-phone"></i><a href="tel:01223461549"  class="phone-number">01223461549</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> القاهرة</p>
+                    <p><i class="fas fa-phone"></i><a href="tel:01100624481" class="phone-number">01100624481</a></p>
+                    <p><i class="fas fa-phone"></i><a href="tel:01013272894" class="phone-number">01013272894</a></p>
+                    <p><i class="fas fa-phone"></i><a href="tel:01223461549" class="phone-number">01223461549</a></p>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2025 KIDS SHOW. جميع الحقوق محفوظة</p>
+                <p>🎄 ✨ 🎅 &copy; 2025 KIDS SHOW. جميع الحقوق محفوظة 🎁 🎄 ✨</p>
             </div>
         </div>
     </footer>
@@ -2274,6 +2660,96 @@
     <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // إنشاء الثلج المتحرك
+            function createSnow() {
+                const snowContainer = document.getElementById('snowContainer');
+                const snowflakeCount = 100;
+                
+                for (let i = 0; i < snowflakeCount; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.className = 'snowflake';
+                    
+                    // حجم عشوائي
+                    const size = Math.random() * 5 + 3;
+                    snowflake.style.width = `${size}px`;
+                    snowflake.style.height = `${size}px`;
+                    
+                    // موقع عشوائي
+                    snowflake.style.left = `${Math.random() * 100}vw`;
+                    
+                    // مدة سقوط عشوائية
+                    const duration = Math.random() * 5 + 5;
+                    snowflake.style.animationDuration = `${duration}s`;
+                    
+                    // تأخير عشوائي
+                    snowflake.style.animationDelay = `${Math.random() * 5}s`;
+                    
+                    // شفافية عشوائية
+                    snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+                    
+                    snowContainer.appendChild(snowflake);
+                }
+            }
+            
+            // إنشاء أضواء الكريسماس
+            function createChristmasLights() {
+                const lightsContainer = document.getElementById('christmasLights');
+                const lightCount = 50;
+                const colors = ['#D32F2F', '#388E3C', '#FFD700', '#2196F3', '#9C27B0'];
+                
+                for (let i = 0; i < lightCount; i++) {
+                    const light = document.createElement('div');
+                    light.className = 'light';
+                    
+                    // لون عشوائي
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    light.style.background = color;
+                    light.style.boxShadow = `0 0 10px ${color}`;
+                    
+                    // موقع عشوائي
+                    light.style.left = `${(i / lightCount) * 100}%`;
+                    
+                    // مدة وتأخير عشوائي
+                    const duration = Math.random() * 1 + 0.5;
+                    light.style.animationDuration = `${duration}s`;
+                    light.style.animationDelay = `${Math.random() * 2}s`;
+                    
+                    lightsContainer.appendChild(light);
+                }
+            }
+            
+            // إنشاء زينة شجرة الكريسماس
+            function createTreeOrnaments() {
+                const tree = document.getElementById('christmasTree');
+                const ornamentCount = 8;
+                const colors = ['#D32F2F', '#FFD700', '#2196F3', '#FFFFFF'];
+                
+                for (let i = 0; i < ornamentCount; i++) {
+                    const ornament = document.createElement('div');
+                    ornament.className = 'tree-ornament';
+                    
+                    // لون عشوائي
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    ornament.style.background = color;
+                    
+                    // موقع عشوائي على الشجرة
+                    const left = Math.random() * 40 + 30;
+                    const top = Math.random() * 60 + 10;
+                    ornament.style.left = `${left}%`;
+                    ornament.style.top = `${top}%`;
+                    
+                    // تأخير عشوائي للوميض
+                    ornament.style.animationDelay = `${Math.random() * 2}s`;
+                    
+                    tree.appendChild(ornament);
+                }
+            }
+            
+            // تهيئة الرسوميات
+            createSnow();
+            createChristmasLights();
+            createTreeOrnaments();
+            
             // Mobile Menu Toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const nav = document.querySelector('nav ul');
@@ -2287,7 +2763,7 @@
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
-                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
                 } else {
                     header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
                 }
@@ -2496,12 +2972,60 @@
                     }, index * 100);
                 });
             }, 500);
+
+            // Christmas Music Toggle (Optional)
+            const christmasMusic = new Audio('https://assets.mixkit.co/music/preview/mixkit-jingle-bells-311.mp3');
+            christmasMusic.loop = true;
+            christmusMusic.volume = 0.3;
+            
+            // إضافة زر لتشغيل الموسيقى (اختياري)
+            const musicBtn = document.createElement('button');
+            musicBtn.innerHTML = '🎵';
+            musicBtn.style.position = 'fixed';
+            musicBtn.style.bottom = '90px';
+            musicBtn.style.left = '30px';
+            musicBtn.style.width = '50px';
+            musicBtn.style.height = '50px';
+            musicBtn.style.borderRadius = '50%';
+            musicBtn.style.background = 'linear-gradient(45deg, var(--christmas-green), var(--christmas-red))';
+            musicBtn.style.color = 'white';
+            musicBtn.style.border = '2px solid var(--christmas-gold)';
+            musicBtn.style.cursor = 'pointer';
+            musicBtn.style.zIndex = '999';
+            musicBtn.style.fontSize = '1.5rem';
+            musicBtn.style.display = 'flex';
+            musicBtn.style.alignItems = 'center';
+            musicBtn.style.justifyContent = 'center';
+            musicBtn.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
+            musicBtn.style.transition = 'all 0.3s ease';
+            
+            musicBtn.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+            
+            musicBtn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+            
+            let isPlaying = false;
+            musicBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    christmasMusic.pause();
+                    this.innerHTML = '🔇';
+                    this.style.background = 'linear-gradient(45deg, #666, #999)';
+                } else {
+                    christmasMusic.play().catch(e => {
+                        console.log('التشغيل التلقائي غير مسموح:', e);
+                        alert('يرجى التفاعل مع الصفحة أولا لتشغيل الموسيقى');
+                    });
+                    this.innerHTML = '🎵';
+                    this.style.background = 'linear-gradient(45deg, var(--christmas-green), var(--christmas-red))';
+                }
+                isPlaying = !isPlaying;
+            });
+            
+            document.body.appendChild(musicBtn);
         });
     </script>
 </body>
-
 </html>
-
-
-
-
