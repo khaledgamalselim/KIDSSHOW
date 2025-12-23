@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIDS SHOW | باقتنا</title>
+    <title>KIDS SHOW | باقتنا - كريسماس سعيد</title>
     <!-- إضافة favicon (الأيقونة الصغيرة بجوار عنوان الصفحة) -->
     <link rel="icon" href="لوجو.png" type="image/png">
     
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables */
+        /* CSS Variables - ألوان الكريسماس */
         :root {
             --primary: #e83e8c;
             --primary-dark: #c2185b;
@@ -22,6 +22,10 @@
             --transition: all 0.3s ease;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --gradient: linear-gradient(135deg, #e83e8c 0%, #ff6b9d 100%);
+            --christmas-red: #C41E3A;
+            --christmas-green: #228B22;
+            --christmas-gold: #FFD700;
+            --christmas-gradient: linear-gradient(135deg, #C41E3A 0%, #228B22 100%);
         }
 
         /* Custom Scrollbar */
@@ -34,7 +38,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary);
+            background: var(--gradient);
             border-radius: 10px;
         }
 
@@ -54,6 +58,74 @@
             transition: width 0.3s ease;
         }
 
+        /* إضافة ثلج كريسماس */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .snowflake {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 3px white);
+        }
+
+        /* أضواء كريسماس في الهيدر */
+        .christmas-lights {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            z-index: 1000;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .light {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin: 0 8px;
+            animation: blink 2s infinite;
+        }
+
+        .light:nth-child(1) { background-color: #ff0000; animation-delay: 0s; }
+        .light:nth-child(2) { background-color: #00ff00; animation-delay: 0.2s; }
+        .light:nth-child(3) { background-color: #0000ff; animation-delay: 0.4s; }
+        .light:nth-child(4) { background-color: #ffff00; animation-delay: 0.6s; }
+        .light:nth-child(5) { background-color: #ff00ff; animation-delay: 0.8s; }
+        .light:nth-child(6) { background-color: #00ffff; animation-delay: 1s; }
+        .light:nth-child(7) { background-color: #ff8800; animation-delay: 1.2s; }
+
+        /* عناصر كريسماس عائمة */
+        .christmas-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        .christmas-element {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.7;
+            animation: float-christmas 20s infinite linear;
+        }
+
         /* Reset & Base Styles */
         * {
             margin: 0;
@@ -71,6 +143,7 @@
             color: var(--dark);
             line-height: 1.7;
             overflow-x: hidden;
+            position: relative;
         }
 
         .container {
@@ -158,6 +231,17 @@
             box-shadow: 0 10px 25px rgba(232, 62, 140, 0.4);
         }
 
+        .btn-christmas {
+            background: var(--christmas-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .btn-christmas:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(196, 30, 58, 0.4);
+        }
+
         /* Header Styles */
         header {
             position: fixed;
@@ -169,6 +253,7 @@
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             transition: var(--transition);
+            border-bottom: 3px solid var(--christmas-red);
         }
 
         .header-container {
@@ -199,8 +284,9 @@
         }
 
         .logo-text p {
-            color: #666;
+            color: var(--christmas-green);
             font-size: 0.9rem;
+            font-weight: bold;
         }
 
         nav ul {
@@ -260,7 +346,7 @@
         /* Packages Hero */
         .packages-hero {
             height: 60vh;
-            background: linear-gradient(rgb(255, 0, 234), rgb(0, 0, 235)), url('images/packages-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=2074&q=80') center/cover no-repeat;
             display: flex;
             align-items: center;
             text-align: center;
@@ -288,6 +374,14 @@
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
         }
 
+        .christmas-title {
+            color: var(--christmas-gold);
+            font-size: 2.5rem;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            animation: glow 2s infinite alternate;
+        }
+
         .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 30px;
@@ -296,6 +390,25 @@
             margin-right: auto;
             animation: fadeInUp 1s ease 0.2s forwards;
             opacity: 0;
+        }
+
+        /* بابا نويل متحرك */
+        .santa-container {
+            position: absolute;
+            bottom: 20px;
+            right: -200px;
+            width: 150px;
+            height: 150px;
+            z-index: 10;
+            animation: santa-fly 25s linear infinite;
+        }
+
+        .santa {
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="20" fill="%23C41E3A"/><circle cx="50" cy="70" r="25" fill="%23C41E3A"/><circle cx="50" cy="30" r="15" fill="%23ffffff"/><circle cx="45" cy="25" r="2" fill="%23000000"/><circle cx="55" cy="25" r="2" fill="%23000000"/><path d="M40 35 Q50 40 60 35" stroke="%23000000" stroke-width="1" fill="none"/><rect x="45" y="65" width="10" height="10" fill="%23228B22"/><rect x="40" y="90" width="20" height="5" fill="%23333"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
         }
 
         /* Floating Elements */
@@ -350,6 +463,7 @@
             padding: 15px;
             border-radius: 50px;
             box-shadow: var(--shadow);
+            border: 2px solid var(--christmas-green);
         }
 
         .package-tab {
@@ -362,16 +476,35 @@
             cursor: pointer;
             transition: var(--transition);
             margin: 0 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--christmas-gradient);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
         }
 
         .package-tab.active {
-            background: var(--gradient);
             color: white;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .package-tab.active::before {
+            opacity: 1;
         }
 
         .package-tab:not(.active):hover {
-            color: var(--primary);
+            color: var(--christmas-red);
+            transform: translateY(-2px);
         }
 
         .packages-grid {
@@ -389,6 +522,7 @@
             position: relative;
             opacity: 0;
             transform: translateY(20px);
+            border: 2px solid transparent;
         }
 
         .package-card.visible {
@@ -399,20 +533,36 @@
         .package-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--christmas-red);
         }
 
         .package-card.popular {
-            border: 2px solid var(--gold);
+            border: 3px solid var(--christmas-gold);
             transform: scale(1.05);
         }
 
         .package-card.popular::before {
-            content: 'الأكثر طلباً';
+            content: '🎄 الأكثر طلباً للكريسماس';
             position: absolute;
             top: 15px;
             left: 15px;
-            background: var(--gold);
-            color: var(--dark);
+            background: var(--christmas-gradient);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(196, 30, 58, 0.3);
+        }
+
+        .package-card.christmas-offer::after {
+            content: '🎁 عرض كريسماس خاص!';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+            color: #333;
             padding: 5px 15px;
             border-radius: 30px;
             font-weight: 500;
@@ -467,11 +617,23 @@
 
         .package-price {
             font-size: 2rem;
-            color: var(--primary);
+            color: var(--christmas-red);
             margin-bottom: 20px;
             font-weight: 700;
             position: relative;
             display: inline-block;
+        }
+
+        .package-price.christmas-price {
+            color: var(--christmas-gold);
+            text-decoration: line-through;
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+
+        .package-price.new-price {
+            color: var(--christmas-red);
+            font-size: 2.2rem;
         }
 
         .package-price::after {
@@ -499,15 +661,13 @@
 
         .package-features li:hover {
             transform: translateX(-5px);
+            color: var(--christmas-red);
         }
 
         .package-features li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
+            content: '🎄';
             position: absolute;
             right: 0;
-            color: var(--primary);
         }
 
         .package-cta {
@@ -528,7 +688,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: var(--christmas-gradient);
         }
 
         /* Footer */
@@ -546,7 +706,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: var(--christmas-gradient);
         }
 
         .footer-grid {
@@ -559,7 +719,7 @@
         .footer-col h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            color: var(--gold);
+            color: var(--christmas-gold);
             position: relative;
             display: inline-block;
         }
@@ -571,7 +731,7 @@
             right: 0;
             width: 50px;
             height: 3px;
-            background: var(--gradient);
+            background: var(--christmas-gradient);
         }
 
         .footer-col p {
@@ -590,7 +750,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--christmas-red);
             padding-right: 5px;
         }
 
@@ -613,7 +773,7 @@
         }
 
         .social-links a:hover {
-            background: var(--primary);
+            background: var(--christmas-red);
             transform: translateY(-3px);
         }
 
@@ -624,7 +784,7 @@
         }
 
         .phone-number:hover {
-            color: var(--primary);
+            color: var(--christmas-red);
         }
 
         .footer-bottom {
@@ -642,14 +802,14 @@
             left: 30px;
             width: 50px;
             height: 50px;
-            background: var(--gradient);
+            background: var(--christmas-gradient);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
             cursor: pointer;
             z-index: 999;
             opacity: 0;
@@ -664,7 +824,7 @@
 
         .back-to-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4);
+            box-shadow: 0 8px 20px rgba(196, 30, 58, 0.4);
         }
 
         /* Animations */
@@ -689,6 +849,44 @@
             100% {
                 transform: translateY(0) rotate(360deg);
             }
+        }
+
+        @keyframes float-christmas {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) translateX(20px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(0) translateX(40px) rotate(180deg);
+            }
+            75% {
+                transform: translateY(20px) translateX(20px) rotate(270deg);
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg);
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px rgba(255, 215, 0, 0.7); }
+            to { text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8); }
+        }
+
+        @keyframes santa-fly {
+            0% { right: -200px; }
+            100% { right: 100%; }
+        }
+
+        @keyframes snowfall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
 
         /* Fade In Animation for Scroll */
@@ -737,6 +935,10 @@
             .package-card.popular {
                 transform: scale(1);
             }
+
+            .santa-container {
+                display: none;
+            }
         }
 
         @media (max-width: 768px) {
@@ -768,10 +970,38 @@
                 height: 40px;
                 font-size: 1rem;
             }
+
+            .christmas-lights {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- ثلج متساقط -->
+    <div class="snowflakes" id="snowflakes"></div>
+    
+    <!-- أضواء كريسماس -->
+    <div class="christmas-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <!-- عناصر كريسماس عائمة -->
+    <div class="christmas-elements">
+        <div class="christmas-element" style="top: 10%; left: 5%;">🎄</div>
+        <div class="christmas-element" style="top: 30%; left: 15%;">🎁</div>
+        <div class="christmas-element" style="top: 60%; left: 10%;">🔔</div>
+        <div class="christmas-element" style="top: 20%; left: 80%;">⭐</div>
+        <div class="christmas-element" style="top: 50%; left: 85%;">❄️</div>
+        <div class="christmas-element" style="top: 80%; left: 90%;">🦌</div>
+    </div>
+
     <!-- Progress Bar -->
     <div class="progress-bar"></div>
 
@@ -788,7 +1018,7 @@
                     <img src="لوجو.png" alt=" KIDS SHOW ">
                     <div class="logo-text">
                         <h1> KIDS SHOW </h1>
-                        <p>مكتب حفلات </p>
+                        <p>مكتب حفلات | كريسماس سعيد 🎄</p>
                     </div>
                 </div>
 
@@ -816,10 +1046,17 @@
             <div class="floating-element"></div>
             <div class="floating-element"></div>
         </div>
+        
+        <!-- بابا نويل متحرك -->
+        <div class="santa-container">
+            <div class="santa"></div>
+        </div>
+        
         <div class="container">
             <div class="hero-content">
-                <h1>باقاتنا المميزة</h1>
-                <p>اختر الباقة التي تناسب احتياجاتك وميزانيتك</p>
+                <h1>باقاتنا المميزة للكريسماس 🎄</h1>
+                <h2 class="christmas-title">🎅 عروض خاصة في موسم الأعياد!</h2>
+                <p>اختر الباقة التي تناسب احتياجاتك وميزانيتك مع أجواء كريسماس ساحرة</p>
             </div>
         </div>
     </section>
@@ -828,154 +1065,172 @@
     <section class="packages">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>عروضنا الخاصة</h2>
-                <p>نقدم مجموعة متنوعة من الباقات لتلبية جميع احتياجاتك</p>
+                <h2>🎁 عروضنا الخاصة للكريسماس</h2>
+                <p>نقدم مجموعة متنوعة من الباقات لتلبية جميع احتياجاتك في موسم الأعياد</p>
             </div>
 
             <div class="packages-tabs fade-in">
-                <button class="package-tab active" data-category="all">الكل</button>
-                <button class="package-tab" data-category="especially">حفلات خاصة</button>
-                <button class="package-tab" data-category="week">حفلات للسبوع</button>
-                <button class="package-tab" data-category="birthday">أعياد الميلاد</button>
+                <button class="package-tab active" data-category="all">الكل 🎄</button>
+                <button class="package-tab" data-category="especially">حفلات خاصة 🎅</button>
+                <button class="package-tab" data-category="week">حفلات للسبوع 🎁</button>
+                <button class="package-tab" data-category="birthday">أعياد الميلاد ⭐</button>
             </div>
 
             <div class="packages-grid">
                 <!-- Package 1 -->
-                <div class="package-card fade-in" data-category="week">
+                <div class="package-card fade-in christmas-offer" data-category="week">
                     <div class="package-img">
                         <img src="ديكور1.jpg" alt="باقة الأولى للسبوع">
                     </div>
                     <div class="package-content">
-                        <h3 class="package-title">الباقة الأولى للسبوع</h3>
-                        <div class="package-price">1,500 ج.م</div>
+                        <h3 class="package-title">🎄 الباقة الأولى للسبوع</h3>
+                        <div>
+                            <span class="package-price christmas-price">1,800 ج.م</span>
+                            <span class="package-price new-price">1,500 ج.م</span>
+                        </div>
                         <ul class="package-features">
-                            <li> DJ </li>
-                            <li> عروستين (2 بيبي) </li>
-                            <li> كلاون </li>
+                            <li> DJ 🎵</li>
+                            <li> عروستين (2 بيبي) 🧚‍♀️</li>
+                            <li> كلاون 🤡</li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
-                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
+                        <h6>🎁 هذا السعر لا يشمل الأنتقالات</h6>
                         <div class="package-cta">
-                            <a href="https://wa.me/201100624481?text=أريد الحجز على الباقة الأولى للسبوع" class="btn btn-primary">احجز الآن</a>
+                            <a href="https://wa.me/201100624481?text=🎄 أريد الحجز على الباقة الأولى للسبوع للكريسماس" class="btn btn-christmas">احجز للكريسماس 🎅</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Package 2 -->
-                <div class="package-card popular fade-in" data-category="week">
+                <div class="package-card popular fade-in christmas-offer" data-category="week">
                     <div class="package-img">
                         <img src="ديكور.jpg" alt="باقة التانية للسبوع">
                     </div>
                     <div class="package-content">
-                        <h3 class="package-title">الباقة التانية</h3>
-                        <div class="package-price">2,500 ج.م</div>
+                        <h3 class="package-title">🎁 الباقة التانية للكريسماس</h3>
+                        <div>
+                            <span class="package-price christmas-price">2,800 ج.م</span>
+                            <span class="package-price new-price">2,500 ج.م</span>
+                        </div>
                         <ul class="package-features">
-                            <li> DJ </li>
-                            <li> 4عرايس (2 بيبي)  و شخصيتين من اختيارك</li>
-                            <li> كلاون </li>
-                            <li> مسابقات </li>
-                            <li> رسم جليتر </li>
+                            <li> DJ 🎵</li>
+                            <li> 4عرايس (2 بيبي) و شخصيتين من اختيارك 🧚‍♀️</li>
+                            <li> كلاون 🤡</li>
+                            <li> مسابقات 🏆</li>
+                            <li> رسم جليتر 🎨</li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
-                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
+                        <h6>🎁 هذا السعر لا يشمل الأنتقالات</h6>
                         <div class="package-cta">
-                            <a href="https://wa.me/201100624481?text=أريد الحجز على الباقة التانية للسبوع" class="btn btn-primary">احجز الآن</a>
+                            <a href="https://wa.me/201100624481?text=🎄 أريد الحجز على الباقة التانية للسبوع للكريسماس" class="btn btn-christmas">احجز للكريسماس 🎅</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Package 3 -->
-                <div class="package-card fade-in" data-category="week">
+                <div class="package-card fade-in christmas-offer" data-category="week">
                     <div class="package-img">
                         <img src="ديكور11.jpg" alt="باقة التالتة للسبوع">
                     </div>
                     <div class="package-content">
-                        <h3 class="package-title">باقة التالتة للسبوع</h3>
-                        <div class="package-price">4,000 ج.م</div>
+                        <h3 class="package-title">⭐ باقة التالتة للسبوع للكريسماس</h3>
+                        <div>
+                            <span class="package-price christmas-price">4,500 ج.م</span>
+                            <span class="package-price new-price">4,000 ج.م</span>
+                        </div>
                         <ul class="package-features">
-                            <li> DJ </li>
-                            <li> 4عرايس (2 بيبي)  و شخصيتين من اختيارك</li>
-                            <li> كلاون </li>
-                            <li> أراجوز </li>
-                            <li> مسابقات </li>
-                            <li> رسم جليتر </li>
-                            <li> غوريلا </li>
-                            <li> غزل 50 فرد </li>
-                            <li> فشار 50 فرد </li>
+                            <li> DJ 🎵</li>
+                            <li> 4عرايس (2 بيبي) و شخصيتين من اختيارك 🧚‍♀️</li>
+                            <li> كلاون 🤡</li>
+                            <li> أراجوز 🎭</li>
+                            <li> مسابقات 🏆</li>
+                            <li> رسم جليتر 🎨</li>
+                            <li> غوريلا 🦍</li>
+                            <li> غزل 50 فرد 🍿</li>
+                            <li> فشار 50 فرد 🍿</li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
-                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
+                        <h6>🎁 هذا السعر لا يشمل الأنتقالات</h6>
                         <div class="package-cta">
-                            <a href="https://wa.me/201100624481?text=أريد الحجز على باقة التالتة للسبوع" class="btn btn-primary">احجز الآن</a>
+                            <a href="https://wa.me/201100624481?text=🎄 أريد الحجز على باقة التالتة للسبوع للكريسماس" class="btn btn-christmas">احجز للكريسماس 🎅</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Package 4 -->
-                <div class="package-card fade-in" data-category="birthday">
+                <div class="package-card fade-in christmas-offer" data-category="birthday">
                     <div class="package-img">
                         <img src="عيد ميلاد1.png" alt="باقة عيد الميلاد">
                     </div>
                     <div class="package-content">
-                        <h3 class="package-title">الباقة الأولى  لأعياد الميلاد</h3>
-                        <div class="package-price">1,500 ج.م</div>
+                        <h3 class="package-title">🎂 الباقة الأولى لأعياد الميلاد للكريسماس</h3>
+                        <div>
+                            <span class="package-price christmas-price">1,800 ج.م</span>
+                            <span class="package-price new-price">1,500 ج.م</span>
+                        </div>
                         <ul class="package-features">
-                            <li> DJ </li>
-                            <li> شخصيتين من اختيارك</li>
-                            <li> كلاون </li>
+                            <li> DJ 🎵</li>
+                            <li> شخصيتين من اختيارك 🎅</li>
+                            <li> كلاون 🤡</li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
-                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
+                        <h6>🎁 هذا السعر لا يشمل الأنتقالات</h6>
                         <div class="package-cta">
-                            <a href="https://wa.me/201100624481?text=أريد الحجز على باقة الأولى لأعيد الميلاد" class="btn btn-primary">احجز الآن</a>
+                            <a href="https://wa.me/201100624481?text=🎄 أريد الحجز على باقة الأولى لأعيد الميلاد للكريسماس" class="btn btn-christmas">احجز للكريسماس 🎅</a>
                         </div>
                     </div>
                 </div>
                 <!-- Package 5 -->
-                <div class="package-card fade-in" data-category="birthday">
+                <div class="package-card fade-in christmas-offer" data-category="birthday">
                     <div class="package-img">
                         <img src="عيد  ميلاد 2.png" alt="باقة عيد الميلاد">
                     </div>
                     <div class="package-content">
-                        <h3 class="package-title">الباقة التانية  لأعياد الميلاد</h3>
-                        <div class="package-price">2,500 ج.م</div>
+                        <h3 class="package-title">🎂 الباقة التانية لأعياد الميلاد للكريسماس</h3>
+                        <div>
+                            <span class="package-price christmas-price">2,800 ج.م</span>
+                            <span class="package-price new-price">2,500 ج.م</span>
+                        </div>
                         <ul class="package-features">
-                            <li> DJ </li>
-                            <li> شخصيتين من اختيارك </li>
-                            <li> كلاون </li>
-                            <li> مسابقات </li>
-                            <li> رسم جليتر </li>
+                            <li> DJ 🎵</li>
+                            <li> شخصيتين من اختيارك 🎅</li>
+                            <li> كلاون 🤡</li>
+                            <li> مسابقات 🏆</li>
+                            <li> رسم جليتر 🎨</li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
-                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
+                        <h6>🎁 هذا السعر لا يشمل الأنتقالات</h6>
                         <div class="package-cta">
-                            <a href="https://wa.me/201100624481?text=أريد الحجز على باقة التانية لأعيد الميلاد" class="btn btn-primary">احجز الآن</a>
+                            <a href="https://wa.me/201100624481?text=🎄 أريد الحجز على باقة التانية لأعيد الميلاد للكريسماس" class="btn btn-christmas">احجز للكريسماس 🎅</a>
                         </div>
                     </div>
                 </div>
                 <!-- Package 6 -->
-                <div class="package-card popular fade-in" data-category="birthday">
+                <div class="package-card popular fade-in christmas-offer" data-category="birthday">
                     <div class="package-img">
                         <img src="عيد ميلا 3.png" alt="باقة عيد الميلاد">
                     </div>
                     <div class="package-content">
-                        <h3 class="package-title">الباقة التالتة  لأعياد الميلاد</h3>
-                        <div class="package-price">4,000 ج.م</div>
+                        <h3 class="package-title">🎂 الباقة التالتة لأعياد الميلاد للكريسماس</h3>
+                        <div>
+                            <span class="package-price christmas-price">4,500 ج.م</span>
+                            <span class="package-price new-price">4,000 ج.م</span>
+                        </div>
                         <ul class="package-features">
-                            <li> DJ </li>
-                            <li> 4 شخصيات من اختيارك</li>
-                            <li> كلاون </li>
-                            <li> أراجوز </li>
-                            <li> مسابقات </li>
-                            <li> رسم جليتر </li>
-                            <li> غوريلا </li>
-                            <li> غزل 50 فرد </li>
-                            <li> فشار 50 فرد </li>
+                            <li> DJ 🎵</li>
+                            <li> 4 شخصيات من اختيارك 🎅</li>
+                            <li> كلاون 🤡</li>
+                            <li> أراجوز 🎭</li>
+                            <li> مسابقات 🏆</li>
+                            <li> رسم جليتر 🎨</li>
+                            <li> غوريلا 🦍</li>
+                            <li> غزل 50 فرد 🍿</li>
+                            <li> فشار 50 فرد 🍿</li>
                             <li>إدارة كاملة للحفل</li>
                         </ul>
-                        <h6> هذا السعر لا يشمل الأنتقالات </h6>
+                        <h6>🎁 هذا السعر لا يشمل الأنتقالات</h6>
                         <div class="package-cta">
-                            <a href="https://wa.me/201100624481?text=أريد الحجز على باقة التالتة لأعيد الميلاد" class="btn btn-primary">احجز الآن</a>
+                            <a href="https://wa.me/201100624481?text=🎄 أريد الحجز على باقة التالتة لأعيد الميلاد للكريسماس" class="btn btn-christmas">احجز للكريسماس 🎅</a>
                         </div>
                     </div>
                 </div>
@@ -987,12 +1242,12 @@
     <section class="custom-package">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>باقة مخصصة</h2>
-                <p>لا تناسبك الباقات الموجودة؟ يمكننا تصميم باقة خاصة بك</p>
+                <h2>🎅 باقة مخصصة للكريسماس</h2>
+                <p>لا تناسبك الباقات الموجودة؟ يمكننا تصميم باقة خاصة بك مع أجواء كريسماس ساحرة! 🎄</p>
             </div>
 
             <div style="text-align: center; margin-top: 40px;">
-                <a href="contact.html" class="btn btn-primary">اطلب باقة مخصصة</a>
+                <a href="contact.html" class="btn btn-christmas">🎁 اطلب باقة كريسماس مخصصة</a>
             </div>
         </div>
     </section>
@@ -1002,8 +1257,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>KIDS SHOW</h3>
-                    <p>نقدم لكم أفضل خدمات تنظيم الحفلات والمناسبات بفريق محترف وأجواء ساحرة</p>
+                    <h3>KIDS SHOW 🎄</h3>
+                    <p>نقدم لكم أفضل خدمات تنظيم الحفلات والمناسبات بفريق محترف وأجواء ساحرة في موسم الكريسماس 🎅</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/kidsshow721?igsh=MTkwMHVyOTg2dTNyaw%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
@@ -1014,26 +1269,26 @@
                 <div class="footer-col">
                     <h3>روابط سريعة</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="packages.html">الباقات والأسعار</a></li>
-                        <li><a href="gallery.html">معرض الأعمال</a></li>
-                        <li><a href="about.html">من نحن</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="index.html">الرئيسية 🏠</a></li>
+                        <li><a href="packages.html">الباقات والأسعار 🎁</a></li>
+                        <li><a href="gallery.html">معرض الأعمال 🖼️</a></li>
+                        <li><a href="about.html">من نحن 👥</a></li>
+                        <li><a href="contact.html">اتصل بنا 📞</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h3>خدماتنا</h3>
+                    <h3>خدمات الكريسماس 🎄</h3>
                     <ul class="footer-links">
-                        <li><a href="gallery.html">حفلات أعياد الميلاد</a></li>
-                        <li><a href="gallery.html">حفلات السبوع</a></li>
-                        <li><a href="gallery.html">الحفلات الخاصة</a></li>
-                        <li><a href="gallery.html">خدمات الديكور</a></li>
+                        <li><a href="gallery.html">🎂 حفلات أعياد الميلاد</a></li>
+                        <li><a href="gallery.html">👶 حفلات السبوع</a></li>
+                        <li><a href="gallery.html">🎅 الحفلات الخاصة</a></li>
+                        <li><a href="gallery.html">⭐ خدمات الديكور</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h3>اتصل بنا</h3>
+                    <h3>اتصل بنا 📞</h3>
                     <p><i class="fas fa-map-marker-alt"></i>القاهرة</p>
                     <p><i class="fas fa-phone"></i><a href="tel:01100624481"  class="phone-number">01100624481</a></p>
                     <p><i class="fas fa-phone"></i><a href="tel:01013272894"  class="phone-number">01013272894</a></p>
@@ -1044,7 +1299,7 @@
 
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2025 KIDS SHOW. جميع الحقوق محفوظة</p>
+                <p>&copy; 2025 KIDS SHOW. جميع الحقوق محفوظة | 🎄 كريسماس سعيد 🎅</p>
             </div>
         </div>
     </footer>
@@ -1052,6 +1307,39 @@
     <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // إنشاء الثلج المتساقط
+            function createSnowflakes() {
+                const snowflakesContainer = document.getElementById('snowflakes');
+                const snowflakeCount = 50;
+                
+                for (let i = 0; i < snowflakeCount; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.className = 'snowflake';
+                    
+                    // حجم عشوائي
+                    const size = Math.random() * 5 + 2;
+                    snowflake.style.width = `${size}px`;
+                    snowflake.style.height = `${size}px`;
+                    
+                    // موقع عشوائي
+                    snowflake.style.left = `${Math.random() * 100}%`;
+                    
+                    // تأخير عشوائي
+                    snowflake.style.animationDelay = `${Math.random() * 5}s`;
+                    
+                    // مدة عشوائية للرسوم المتحركة
+                    const duration = Math.random() * 10 + 5;
+                    snowflake.style.animation = `snowfall ${duration}s linear infinite`;
+                    
+                    // شفافية عشوائية
+                    snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+                    
+                    snowflakesContainer.appendChild(snowflake);
+                }
+            }
+            
+            createSnowflakes();
+            
             // Mobile Menu Toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const nav = document.querySelector('nav ul');
@@ -1151,6 +1439,34 @@
                     }, index * 200);
                 });
             }, 500);
+            
+            // تأثير بابا نويل يعيد الظهور
+            const santaContainer = document.querySelector('.santa-container');
+            if (santaContainer) {
+                setInterval(() => {
+                    santaContainer.style.animation = 'none';
+                    setTimeout(() => {
+                        santaContainer.style.animation = 'santa-fly 25s linear infinite';
+                    }, 10);
+                }, 25000); // كل 25 ثانية (مدة الرسوم المتحركة)
+            }
+            
+            // تغيير لون الأضواء بشكل دوري
+            const lights = document.querySelectorAll('.light');
+            setInterval(() => {
+                lights.forEach(light => {
+                    const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+                    light.style.backgroundColor = randomColor;
+                });
+            }, 3000);
+            
+            // إضافة تأثير عروض الكريسماس
+            const christmasCards = document.querySelectorAll('.christmas-offer');
+            setInterval(() => {
+                christmasCards.forEach(card => {
+                    card.style.boxShadow = '0 0 20px ' + (Math.random() > 0.5 ? 'rgba(196, 30, 58, 0.5)' : 'rgba(255, 215, 0, 0.5)');
+                });
+            }, 1000);
         });
     </script>
 </body>
