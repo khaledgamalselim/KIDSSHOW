@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIDS SHOW | من نحن</title>
-    <!-- إضافة favicon (الأيقونة الصغيرة بجوار عنوان الصفحة) -->
+    <title>KIDS SHOW | من نحن - كريسماس</title>
     <link rel="icon" href="لوجو.png" type="image/png">
-    
-    <!-- للتوافق مع جميع المتصفحات -->
     <link rel="shortcut icon" href="لوجو.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables */
+        /* CSS Variables - ألوان كريسماس */
         :root {
             --primary: #e83e8c;
             --primary-dark: #c2185b;
@@ -22,9 +19,15 @@
             --transition: all 0.3s ease;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --gradient: linear-gradient(135deg, #e83e8c 0%, #ff6b9d 100%);
+            /* ألوان جديدة للكريسماس */
+            --christmas-red: #c62828;
+            --christmas-green: #2e7d32;
+            --christmas-gold: #FFD700;
+            --winter-blue: #e3f2fd;
+            --snow-white: #f8f9fa;
         }
 
-        /* Custom Scrollbar */
+        /* Custom Scrollbar - بلون كريسماس */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -34,22 +37,22 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary);
+            background: var(--christmas-green);
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+            background: var(--christmas-red);
         }
 
-        /* Progress Bar */
+        /* Progress Bar - بلون كريسماس */
         .progress-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 0%;
             height: 4px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red), var(--christmas-gold));
             z-index: 1001;
             transition: width 0.3s ease;
         }
@@ -65,12 +68,101 @@
             scroll-behavior: smooth;
         }
 
+        /* خلفية الصفحة الرئيسية بشتاء وأجواء كريسماس */
         body {
             font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            background: linear-gradient(180deg, #0c1a2d 0%, #1a3a5f 30%, #2c5282 70%, #4a90e2 100%);
             color: var(--dark);
             line-height: 1.7;
             overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* تأثير تساقط الثلج */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .snowflake {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10px;
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0.3;
+            }
+        }
+
+        /* بابا نويل الطائر */
+        #flying-santa {
+            position: fixed;
+            top: 20%;
+            right: -200px; /* يبدأ من خارج الشاشة على اليمين */
+            width: 150px;
+            z-index: 999;
+            pointer-events: none;
+            animation: flySanta 30s linear infinite;
+        }
+
+        #flying-santa img {
+            width: 100%;
+            filter: drop-shadow(0 0 10px rgba(255, 50, 50, 0.7));
+        }
+
+        @keyframes flySanta {
+            0% {
+                right: -200px;
+                transform: translateY(0px);
+            }
+            10% {
+                transform: translateY(20px);
+            }
+            20% {
+                transform: translateY(-15px);
+            }
+            30% {
+                transform: translateY(10px);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(0px);
+            }
+            60% {
+                transform: translateY(15px);
+            }
+            70% {
+                transform: translateY(-5px);
+            }
+            80% {
+                transform: translateY(10px);
+            }
+            90% {
+                transform: translateY(-20px);
+            }
+            100% {
+                right: 100vw;
+                transform: translateY(0px);
+            }
         }
 
         .container {
@@ -92,10 +184,11 @@
 
         .section-title h2 {
             font-size: 2.5rem;
-            color: var(--dark);
+            color: white; /* تغيير اللون ليكون أوضح على الخلفية الداكنة */
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .section-title h2::after {
@@ -106,12 +199,12 @@
             transform: translateX(50%);
             width: 80px;
             height: 4px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-gold));
             border-radius: 2px;
         }
 
         .section-title p {
-            color: #666;
+            color: #e0e0e0; /* لون فاتح للقراءة */
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
@@ -148,27 +241,28 @@
         }
 
         .btn-primary {
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-red), #d32f2f);
             color: white;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(198, 40, 40, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(232, 62, 140, 0.4);
+            box-shadow: 0 10px 25px rgba(198, 40, 40, 0.6);
         }
 
-        /* Header Styles */
+        /* Header Styles - مع لمسات كريسماس */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             transition: var(--transition);
+            border-bottom: 3px solid var(--christmas-green);
         }
 
         .header-container {
@@ -190,19 +284,21 @@
         }
 
         .logo:hover img {
-            transform: rotate(5deg);
+            transform: rotate(5deg) scale(1.05);
         }
 
         .logo-text h1 {
-            color: var(--primary);
+            color: var(--christmas-red);
             font-size: 1.8rem;
         }
 
         .logo-text p {
-            color: #666;
+            color: var(--christmas-green);
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
+        /* القائمة مع زينة عيد الميلاد */
         nav ul {
             display: flex;
             list-style: none;
@@ -210,6 +306,23 @@
 
         nav ul li {
             margin-right: 25px;
+            position: relative;
+        }
+
+        nav ul li::before {
+            content: '🎄';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        nav ul li:hover::before {
+            opacity: 1;
+            right: -20px;
         }
 
         nav ul li a {
@@ -229,13 +342,13 @@
             right: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red));
             transition: var(--transition);
         }
 
         nav ul li a:hover,
         nav ul li a.active {
-            color: var(--primary);
+            color: var(--christmas-red);
         }
 
         nav ul li a:hover::after,
@@ -254,13 +367,17 @@
         }
 
         .mobile-menu-btn:hover {
-            color: var(--primary);
+            color: var(--christmas-red);
         }
 
-        /* About Hero */
+        /* About Hero - خلفية كريسماس */
         .about-hero {
             height: 60vh;
-            background: linear-gradient(rgb(255, 4, 234), rgb(38, 0, 255)), url('images/about-bg.jpg') center/cover no-repeat;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(46, 125, 50, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(198, 40, 40, 0.7) 0%, rgba(42, 95, 141, 0.9) 100%),
+                url('images/about-bg.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             text-align: center;
@@ -277,7 +394,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e83e8c' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             opacity: 0.3;
         }
 
@@ -285,7 +402,8 @@
             font-size: 3rem;
             margin-bottom: 20px;
             animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            color: white;
         }
 
         .hero-content p {
@@ -296,9 +414,10 @@
             margin-right: auto;
             animation: fadeInUp 1s ease 0.2s forwards;
             opacity: 0;
+            color: #f0f0f0;
         }
 
-        /* Floating Elements */
+        /* Floating Elements - بشكل كريسماس */
         .floating-elements {
             position: absolute;
             top: 0;
@@ -322,6 +441,7 @@
             top: 10%;
             left: 10%;
             animation-delay: 0s;
+            background: radial-gradient(circle, var(--christmas-red), transparent);
         }
 
         .floating-element:nth-child(2) {
@@ -330,6 +450,7 @@
             top: 60%;
             left: 80%;
             animation-delay: 2s;
+            background: radial-gradient(circle, var(--christmas-green), transparent);
         }
 
         .floating-element:nth-child(3) {
@@ -338,9 +459,10 @@
             top: 40%;
             left: 20%;
             animation-delay: 4s;
+            background: radial-gradient(circle, var(--christmas-gold), transparent);
         }
 
-        /* About Section */
+        /* About Section - مع حدود كريسماس */
         .about-content {
             display: flex;
             align-items: center;
@@ -349,6 +471,12 @@
 
         .about-text {
             flex: 1;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--christmas-red);
+            border-right: 5px solid var(--christmas-green);
         }
 
         .about-text h3 {
@@ -366,7 +494,7 @@
             right: 0;
             width: 80px;
             height: 3px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red));
         }
 
         .about-text p {
@@ -388,12 +516,12 @@
         }
 
         .feature-item:hover {
-            background: rgba(232, 62, 140, 0.05);
+            background: rgba(198, 40, 40, 0.05);
             transform: translateX(-5px);
         }
 
         .feature-icon {
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--christmas-red), #d32f2f);
             color: white;
             width: 50px;
             height: 50px;
@@ -404,11 +532,11 @@
             margin-left: 20px;
             flex-shrink: 0;
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(232, 62, 140, 0.3);
+            box-shadow: 0 4px 10px rgba(198, 40, 40, 0.3);
         }
 
         .feature-item:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1) rotate(10deg);
         }
 
         .feature-content h4 {
@@ -424,6 +552,9 @@
             box-shadow: var(--shadow);
             position: relative;
             transition: var(--transition);
+            border: 5px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(45deg, var(--christmas-red), var(--christmas-green), var(--christmas-gold)) border-box;
         }
 
         .about-image:hover {
@@ -438,14 +569,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
+            background: linear-gradient(45deg, rgba(198, 40, 40, 0.1), rgba(46, 125, 50, 0.1));
             opacity: 0;
             transition: var(--transition);
             z-index: 1;
         }
 
         .about-image:hover::before {
-            opacity: 0.1;
+            opacity: 1;
         }
 
         .about-image img {
@@ -459,9 +590,11 @@
             transform: scale(1.05);
         }
 
-        /* Team Section */
+        /* Team Section - مع خلفية ثلجية */
         .team-section {
-            background: #f9f9f9;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('https://images.unsplash.com/photo-1491002052546-bf38f186af56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
             position: relative;
         }
 
@@ -472,7 +605,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red), var(--christmas-gold));
         }
 
         .team-grid {
@@ -490,6 +623,7 @@
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
+            border-top: 5px solid var(--christmas-red);
         }
 
         .team-member.visible {
@@ -500,6 +634,7 @@
         .team-member:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-top-color: var(--christmas-green);
         }
 
         .member-image {
@@ -515,14 +650,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
+            background: linear-gradient(45deg, rgba(198, 40, 40, 0.1), rgba(46, 125, 50, 0.1));
             opacity: 0;
             transition: var(--transition);
             z-index: 1;
         }
 
         .team-member:hover .member-image::before {
-            opacity: 0.1;
+            opacity: 0.3;
         }
 
         .member-image img {
@@ -547,7 +682,7 @@
         }
 
         .member-info p {
-            color: var(--primary);
+            color: var(--christmas-red);
             font-weight: 500;
             margin-bottom: 15px;
         }
@@ -571,14 +706,16 @@
         }
 
         .member-social a:hover {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--christmas-red), #d32f2f);
             color: white;
             transform: translateY(-3px);
         }
 
-        /* Stats Section */
+        /* Stats Section - مع خلفية كريسماس */
         .stats-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/stats-bg.jpg') center/cover no-repeat;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+                url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
             color: white;
             text-align: center;
             position: relative;
@@ -591,7 +728,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red), var(--christmas-gold));
         }
 
         .stats-grid {
@@ -613,18 +750,20 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 10px;
-            color: var(--gold);
+            color: var(--christmas-gold);
             display: block;
             transition: var(--transition);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
         .stat-title {
             font-size: 1.2rem;
+            color: #e0e0e0;
         }
 
-        /* Footer */
+        /* Footer - مع لمسات كريسماس */
         footer {
-            background: var(--dark);
+            background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
             color: white;
             padding: 60px 0 0;
             position: relative;
@@ -637,7 +776,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red), var(--christmas-gold));
         }
 
         .footer-grid {
@@ -650,7 +789,7 @@
         .footer-col h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
-            color: var(--gold);
+            color: var(--christmas-gold);
             position: relative;
             display: inline-block;
         }
@@ -662,7 +801,7 @@
             right: 0;
             width: 50px;
             height: 3px;
-            background: var(--gradient);
+            background: linear-gradient(to right, var(--christmas-green), var(--christmas-red));
         }
 
         .footer-col p {
@@ -681,7 +820,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--christmas-red);
             padding-right: 5px;
         }
 
@@ -704,7 +843,7 @@
         }
 
         .social-links a:hover {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--christmas-red), #d32f2f);
             transform: translateY(-3px);
         }
 
@@ -715,7 +854,7 @@
         }
 
         .phone-number:hover {
-            color: var(--primary);
+            color: var(--christmas-red);
         }
 
         .footer-bottom {
@@ -724,28 +863,30 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #ccc;
             font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.2);
         }
 
-        /* Back to Top Button */
+        /* Back to Top Button - بشكل كريسماس */
         .back-to-top {
             position: fixed;
             bottom: 30px;
             left: 30px;
             width: 50px;
             height: 50px;
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--christmas-red), #d32f2f);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(198, 40, 40, 0.3);
             cursor: pointer;
             z-index: 999;
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
+            border: 2px solid var(--christmas-gold);
         }
 
         .back-to-top.active {
@@ -755,7 +896,8 @@
 
         .back-to-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4);
+            box-shadow: 0 8px 20px rgba(198, 40, 40, 0.4);
+            background: linear-gradient(135deg, var(--christmas-green), #2e7d32);
         }
 
         /* Animations */
@@ -828,6 +970,11 @@
             .about-image {
                 margin-top: 40px;
             }
+
+            #flying-santa {
+                width: 100px;
+                top: 10%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -850,10 +997,22 @@
                 height: 40px;
                 font-size: 1rem;
             }
+
+            #flying-santa {
+                display: none; /* إخفاء بابا نويل على الشاشات الصغيرة لتحسين الأداء */
+            }
         }
     </style>
 </head>
 <body>
+    <!-- تأثير تساقط الثلج -->
+    <div class="snowflakes" id="snowflakes"></div>
+
+    <!-- بابا نويل الطائر -->
+    <div id="flying-santa">
+        <img src="https://cdn-icons-png.flaticon.com/512/3480/3480259.png" alt="بابا نويل طائر">
+    </div>
+
     <!-- Progress Bar -->
     <div class="progress-bar"></div>
 
@@ -870,7 +1029,7 @@
                     <img src="لوجو.png" alt="KIDS SHOW">
                     <div class="logo-text">
                         <h1>KIDS SHOW</h1>
-                        <p>مكتب حفلات </p>
+                        <p>مكتب حفلات - 🎄 أجواء كريسماس 🎅</p>
                     </div>
                 </div>
 
@@ -900,8 +1059,8 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1>من نحن</h1>
-                <p>قصة نجاحنا وخبراتنا في تنظيم الحفلات</p>
+                <h1>🎄 من نحن 🎅</h1>
+                <p>قصة نجاحنا وخبراتنا في تنظيم الحفلات - بأجواء كريسماس ساحرة</p>
             </div>
         </div>
     </section>
@@ -911,43 +1070,43 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <h3>KIDS SHOW - خبرة وإبداع في تنظيم الحفلات</h3>
+                    <h3>KIDS SHOW - 🎁 خبرة وإبداع في تنظيم الحفلات</h3>
                     <p>تأسس مكتب KIDS SHOW عام 2012 بهدف تقديم خدمات تنظيم الحفلات والمناسبات بأعلى معايير الجودة والاحترافية. على مدار أكثر من عقد من الزمن، استطعنا كسب ثقة المئات من العملاء من خلال تقديم تجارب استثنائية لا تنسى.</p>
                     <p>نؤمن في كيدز شو أن كل مناسبة هي قصة فريدة تستحق أن تروى بأجمل تفاصيلها، ولذلك نحرص على تقديم حلول مخصصة تلبي تطلعات عملائنا وتجعل من مناسباتهم لحظات استثنائية.</p>
                     
                     <div class="about-features">
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-medal"></i>
+                                <i class="fas fa-star"></i> <!-- أيقونة نجمة بدلاً من ميدالية -->
                             </div>
                             <div class="feature-content">
-                                <h4>جودة عالية</h4>
+                                <h4>جودة عالية 🎄</h4>
                                 <p>نستخدم أفضل المواد والخامات لضمان جودة لا تضاهى</p>
                             </div>
                         </div>
                         
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-lightbulb"></i>
+                                <i class="fas fa-tree"></i> <!-- أيقونة شجرة كريسماس -->
                             </div>
                             <div class="feature-content">
-                                <h4>إبداع مميز</h4>
+                                <h4>إبداع مميز 🎁</h4>
                                 <p>تصاميم فريدة ومبتكرة تناسب جميع الأذواق</p>
                             </div>
                         </div>
                         
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-sleigh"></i> <!-- أيقونة مزلقة بابا نويل -->
                             </div>
                             <div class="feature-content">
-                                <h4>فريق محترف</h4>
+                                <h4>فريق محترف 🎅</h4>
                                 <p>خبراء في تنظيم الحفلات مع سنوات من الخبرة</p>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="contact.html" class="btn btn-primary">تواصل معنا</a>
+                    <a href="contact.html" class="btn btn-primary">🎄 تواصل معنا 🎅</a>
                 </div>
                 
                 <div class="about-image fade-in">
@@ -961,8 +1120,8 @@
     <section class="team-section">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>فريقنا المحترف</h2>
-                <p>خبراء في تنظيم الحفلات والمناسبات</p>
+                <h2>🎅 فريقنا المحترف 🎄</h2>
+                <p>خبراء في تنظيم الحفلات والمناسبات بأجواء كريسماس</p>
             </div>
             
             <div class="team-grid">
@@ -971,7 +1130,7 @@
                         <img src="ملك.png" alt=" ملك ">
                     </div>
                     <div class="member-info">
-                        <h3>أ\ملك</h3>
+                        <h3>أ\ملك 🎁</h3>
                         <p>مدير تنفيذي</p>
                         <div class="member-social">
                             <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
@@ -986,7 +1145,7 @@
                         <img src="مريان.png" alt=" مدير عام ">
                     </div>
                     <div class="member-info">
-                        <h3>أ\مريان</h3>
+                        <h3>أ\مريان 🎄</h3>
                         <p>مدير عام</p>
                         <div class="member-social">
                             <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
@@ -1001,7 +1160,7 @@
                     <img src="ايمن.png" alt=" أيمن ">
                     </div>
                     <div class="member-info">
-                        <h3>أ\أيمن</h3>
+                        <h3>أ\أيمن 🎅</h3>
                         <p>مشرف تنفيذي</p>
                         <div class="member-social">
                             <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
@@ -1020,22 +1179,22 @@
             <div class="stats-grid">
                 <div class="stat-item fade-in">
                     <div class="stat-number" data-target="13">0</div>
-                    <div class="stat-title">سنوات خبرة</div>
+                    <div class="stat-title">🎄 سنوات خبرة</div>
                 </div>
                 
                 <div class="stat-item fade-in">
                     <div class="stat-number" data-target="3765">0</div>
-                    <div class="stat-title">حفلة ناجحة</div>
+                    <div class="stat-title">🎁 حفلة ناجحة</div>
                 </div>
                 
                 <div class="stat-item fade-in">
                     <div class="stat-number" data-target="3755">0</div>
-                    <div class="stat-title">عميل سعيد</div>
+                    <div class="stat-title">🎅 عميل سعيد</div>
                 </div>
                 
                 <div class="stat-item fade-in">
                     <div class="stat-number" data-target="3578">0</div>
-                    <div class="stat-title">جائزة وتكريم</div>
+                    <div class="stat-title">🌟 جائزة وتكريم</div>
                 </div>
             </div>
         </div>
@@ -1046,8 +1205,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3> KIDS SHOW </h3>
-                    <p>نقدم لكم أفضل خدمات تنظيم الحفلات والمناسبات بفريق محترف وأجواء ساحرة</p>
+                    <h3> KIDS SHOW 🎄</h3>
+                    <p>نقدم لكم أفضل خدمات تنظيم الحفلات والمناسبات بفريق محترف وأجواء كريسماس ساحرة</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/kidsshow721?igsh=MTkwMHVyOTg2dTNyaw%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
@@ -1056,29 +1215,29 @@
                 </div>
 
                 <div class="footer-col">
-                    <h3>روابط سريعة</h3>
+                    <h3>🎅 روابط سريعة</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="packages.html">الباقات والأسعار</a></li>
-                        <li><a href="gallery.html">معرض الأعمال</a></li>
-                        <li><a href="about.html">من نحن</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="index.html">الرئيسية 🏠</a></li>
+                        <li><a href="packages.html">الباقات والأسعار 🎁</a></li>
+                        <li><a href="gallery.html">معرض الأعمال 🖼️</a></li>
+                        <li><a href="about.html">من نحن 👥</a></li>
+                        <li><a href="contact.html">اتصل بنا 📞</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h3>خدماتنا</h3>
+                    <h3>🎄 خدماتنا</h3>
                     <ul class="footer-links">
-                        <li><a href="gallery.html">حفلات أعياد الميلاد</a></li>
-                        <li><a href="gallery.html">حفلات السبوع</a></li>
-                        <li><a href="gallery.html">الحفلات الخاصة</a></li>
-                        <li><a href="gallery.html">خدمات الديكور</a></li>
+                        <li><a href="gallery.html">حفلات أعياد الميلاد 🎂</a></li>
+                        <li><a href="gallery.html">حفلات السبوع 👶</a></li>
+                        <li><a href="gallery.html">الحفلات الخاصة 🎉</a></li>
+                        <li><a href="gallery.html">خدمات الديكور 🎨</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h3>اتصل بنا</h3>
-                    <p><i class="fas fa-map-marker-alt"></i>القاهرة</p>
+                    <h3>🎅 اتصل بنا</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> القاهرة 🗺️</p>
                     <p><i class="fas fa-phone"></i><a href="tel:01100624481"  class="phone-number">01100624481</a></p>
                     <p><i class="fas fa-phone"></i><a href="tel:01013272894"  class="phone-number">01013272894</a></p>
                     <p><i class="fas fa-phone"></i><a href="tel:01223461549"  class="phone-number">01223461549</a></p>
@@ -1088,7 +1247,7 @@
 
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2025 KIDS SHOW. جميع الحقوق محفوظة</p>
+                <p>&copy; 2025 KIDS SHOW. جميع الحقوق محفوظة 🎄🎅🎁</p>
             </div>
         </div>
     </footer>
@@ -1193,6 +1352,44 @@
             
             // Run on scroll
             window.addEventListener('scroll', animateStats);
+
+            // إنشاء ندف الثلج الديناميكية
+            function createSnowflakes() {
+                const snowflakesContainer = document.getElementById('snowflakes');
+                const snowflakeCount = 60; // عدد ندف الثلج
+                
+                for (let i = 0; i < snowflakeCount; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.classList.add('snowflake');
+                    
+                    // حجم عشوائي
+                    const size = Math.random() * 10 + 5;
+                    snowflake.style.width = `${size}px`;
+                    snowflake.style.height = `${size}px`;
+                    
+                    // موقع أفقي عشوائي
+                    snowflake.style.left = `${Math.random() * 100}vw`;
+                    
+                    // شفافية عشوائية
+                    snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+                    
+                    // سرعة سقوط عشوائية
+                    const duration = Math.random() * 5 + 5;
+                    snowflake.style.animationDuration = `${duration}s`;
+                    
+                    // تأخير عشوائي
+                    snowflake.style.animationDelay = `${Math.random() * 5}s`;
+                    
+                    snowflakesContainer.appendChild(snowflake);
+                }
+            }
+
+            // تشغيل وظيفة إنشاء ندف الثلج بعد تحميل الصفحة
+            createSnowflakes();
+
+            // إضافة رسالة ترحيب كريسماس في الكونسول
+            console.log("🎄🎅🎁 أجواء كريسماس سعيدة من KIDS SHOW! 🎁🎅🎄");
+            console.log("تم تحميل تأثيرات الثلج وبابا نويل الطائر بنجاح!");
         });
     </script>
 </body>
