@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIDS SHOW | من نحن</title>
-    <!-- إضافة favicon (الأيقونة الصغيرة بجوار عنوان الصفحة) -->
-    <link rel="icon" href="لوجو.png" type="image/png">
+    <title>KIDS SHOW | من نحن - رمضان كريم</title>
     
-    <!-- للتوافق مع جميع المتصفحات -->
+    <!-- Favicon -->
+    <link rel="icon" href="لوجو.png" type="image/png">
     <link rel="shortcut icon" href="لوجو.png" type="image/x-icon">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- الخطوط العربية -->
+    <link href="https://fonts.googleapis.com/css2?family=Lateef:wght@400;500;600;700&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Variables */
+        /* متغيرات الألوان الرمضانية */
         :root {
-            --primary: #e83e8c;
-            --primary-dark: #c2185b;
-            --gold: #FFD700;
-            --dark: #1a1a1a;
-            --light: #f8f9fa;
+            --ramadan-green: #1B5E20;
+            --ramadan-green-light: #2E8B57;
+            --ramadan-gold: #D4AF37;
+            --ramadan-gold-light: #FFD700;
+            --ramadan-brown: #8B4513;
+            --ramadan-brown-light: #A0522D;
+            --ramadan-blue: #0D47A1;
+            --ramadan-purple: #4A148C;
+            --dark: #0a1a0f;
+            --light: #f5f5e6;
             --transition: all 0.3s ease;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --gradient: linear-gradient(135deg, #e83e8c 0%, #ff6b9d 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --gradient: linear-gradient(135deg, var(--ramadan-green) 0%, var(--ramadan-green-light) 100%);
+            --gold-gradient: linear-gradient(135deg, var(--ramadan-gold) 0%, var(--ramadan-gold-light) 100%);
         }
 
         /* Custom Scrollbar */
@@ -34,12 +44,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--primary);
+            background: var(--ramadan-green);
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+            background: var(--ramadan-green-light);
         }
 
         /* Progress Bar */
@@ -49,7 +59,7 @@
             left: 0;
             width: 0%;
             height: 4px;
-            background: var(--gradient);
+            background: var(--gold-gradient);
             z-index: 1001;
             transition: width 0.3s ease;
         }
@@ -66,11 +76,72 @@
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
-            color: var(--dark);
+            font-family: 'Amiri', serif;
+            background-color: var(--dark);
+            color: var(--light);
             line-height: 1.7;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(27, 94, 32, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 20%);
+            position: relative;
+        }
+
+        /* خلفية رمضانية مع قمر ونجوم */
+        .ramadan-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .moon {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 30% 30%, #FFF8E1, #FFECB3, #FFD54F);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 60px #FFD54F,
+                0 0 100px rgba(255, 213, 79, 0.5),
+                inset 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: moonGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes moonGlow {
+            0% { box-shadow: 0 0 60px #FFD54F, 0 0 100px rgba(255, 213, 79, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.8); }
+            100% { box-shadow: 0 0 80px #FFD54F, 0 0 120px rgba(255, 213, 79, 0.7), inset 0 0 30px rgba(255, 255, 255, 0.9); }
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .islamic-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23D4AF37' fill-opacity='0.3' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
         .container {
@@ -82,6 +153,7 @@
 
         section {
             padding: 80px 0;
+            position: relative;
         }
 
         .section-title {
@@ -91,35 +163,41 @@
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
+            font-family: 'Lateef', cursive;
+            font-size: 3.2rem;
+            color: var(--ramadan-gold-light);
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
         }
 
-        .section-title h2::after {
-            content: '';
+        .section-title h2::before, .section-title h2::after {
+            content: '🕌';
             position: absolute;
-            bottom: -10px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.8rem;
+        }
+
+        .section-title h2::before {
+            right: -40px;
+        }
+
+        .section-title h2::after {
+            left: -40px;
         }
 
         .section-title p {
-            color: #666;
-            font-size: 1.1rem;
+            color: #ccc;
+            font-size: 1.3rem;
             max-width: 700px;
             margin: 0 auto;
+            line-height: 1.8;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 50px;
             font-weight: 500;
             text-align: center;
@@ -129,6 +207,9 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.1rem;
+            text-decoration: none;
         }
 
         .btn::before {
@@ -148,14 +229,15 @@
         }
 
         .btn-primary {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            background: var(--gold-gradient);
+            color: var(--dark);
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(232, 62, 140, 0.4);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.6);
         }
 
         /* Header Styles */
@@ -165,10 +247,11 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(10, 26, 15, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             transition: var(--transition);
+            border-bottom: 2px solid var(--ramadan-gold);
         }
 
         .header-container {
@@ -184,9 +267,10 @@
         }
 
         .logo img {
-            height: 50px;
+            height: 60px;
             margin-left: 10px;
             transition: var(--transition);
+            filter: drop-shadow(0 0 5px var(--ramadan-gold));
         }
 
         .logo:hover img {
@@ -194,13 +278,15 @@
         }
 
         .logo-text h1 {
-            color: var(--primary);
-            font-size: 1.8rem;
+            color: var(--ramadan-gold-light);
+            font-size: 2rem;
+            font-family: 'Lateef', cursive;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
         .logo-text p {
-            color: #666;
-            font-size: 0.9rem;
+            color: #aaa;
+            font-size: 1rem;
         }
 
         nav ul {
@@ -213,13 +299,14 @@
         }
 
         nav ul li a {
-            color: var(--dark);
+            color: var(--light);
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
             transition: var(--transition);
             position: relative;
             padding: 5px 0;
+            font-family: 'Tajawal', sans-serif;
         }
 
         nav ul li a::after {
@@ -229,13 +316,13 @@
             right: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient);
+            background: var(--gold-gradient);
             transition: var(--transition);
         }
 
         nav ul li a:hover,
         nav ul li a.active {
-            color: var(--primary);
+            color: var(--ramadan-gold-light);
         }
 
         nav ul li a:hover::after,
@@ -248,19 +335,19 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--dark);
+            color: var(--light);
             cursor: pointer;
             transition: var(--transition);
         }
 
         .mobile-menu-btn:hover {
-            color: var(--primary);
+            color: var(--ramadan-gold);
         }
 
         /* About Hero */
         .about-hero {
             height: 60vh;
-            background: linear-gradient(rgb(255, 4, 234), rgb(38, 0, 255)), url('images/about-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(10, 26, 15, 0.9), rgba(27, 94, 32, 0.7)), url('images/ramadan-about-bg.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             text-align: center;
@@ -268,6 +355,7 @@
             margin-top: 80px;
             position: relative;
             overflow: hidden;
+            border-bottom: 2px solid var(--ramadan-gold);
         }
 
         .about-hero::before {
@@ -277,19 +365,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e83e8c' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23D4AF37' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             opacity: 0.3;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
+            font-family: 'Lateef', cursive;
+            font-size: 3.8rem;
             margin-bottom: 20px;
             animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            color: var(--ramadan-gold-light);
         }
 
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin-bottom: 30px;
             max-width: 700px;
             margin-left: auto;
@@ -298,8 +388,8 @@
             opacity: 0;
         }
 
-        /* Floating Elements */
-        .floating-elements {
+        /* Floating Ramadan Lanterns */
+        .floating-lanterns {
             position: absolute;
             top: 0;
             left: 0;
@@ -309,35 +399,47 @@
             z-index: 1;
         }
 
-        .floating-element {
+        .lantern {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
+            width: 50px;
+            height: 70px;
+            background: var(--gold-gradient);
+            border-radius: 10px 10px 25px 25px;
+            animation: floatLantern 20s infinite linear;
+            opacity: 0.7;
+            box-shadow: 0 0 20px var(--ramadan-gold);
         }
 
-        .floating-element:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 10px;
+            background: var(--ramadan-brown);
+            border-radius: 5px 5px 0 0;
         }
 
-        .floating-element:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 2s;
+        .lantern::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 15px;
+            background: var(--ramadan-gold);
         }
 
-        .floating-element:nth-child(3) {
-            width: 40px;
-            height: 40px;
-            top: 40%;
-            left: 20%;
-            animation-delay: 4s;
+        @keyframes floatLantern {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
         }
 
         /* About Section */
@@ -352,9 +454,10 @@
         }
 
         .about-text h3 {
-            font-size: 2rem;
+            font-family: 'Lateef', cursive;
+            font-size: 2.5rem;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: var(--ramadan-gold-light);
             position: relative;
             display: inline-block;
         }
@@ -366,45 +469,51 @@
             right: 0;
             width: 80px;
             height: 3px;
-            background: var(--gradient);
+            background: var(--gold-gradient);
         }
 
         .about-text p {
             margin-bottom: 20px;
-            color: #555;
+            color: #ccc;
+            font-size: 1.2rem;
+            line-height: 1.9;
         }
 
         .about-features {
-            margin: 30px 0;
+            margin: 40px 0;
         }
 
         .feature-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             transition: var(--transition);
-            padding: 15px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(27, 94, 32, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .feature-item:hover {
-            background: rgba(232, 62, 140, 0.05);
-            transform: translateX(-5px);
+            background: rgba(27, 94, 32, 0.2);
+            transform: translateX(-10px);
+            border-color: var(--ramadan-gold);
         }
 
         .feature-icon {
-            background: var(--gradient);
-            color: white;
-            width: 50px;
-            height: 50px;
+            background: var(--gold-gradient);
+            color: var(--dark);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 20px;
+            margin-left: 25px;
             flex-shrink: 0;
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(232, 62, 140, 0.3);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            font-size: 1.5rem;
         }
 
         .feature-item:hover .feature-icon {
@@ -412,9 +521,15 @@
         }
 
         .feature-content h4 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-            color: var(--dark);
+            font-family: 'Lateef', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--ramadan-gold);
+        }
+
+        .feature-content p {
+            color: #aaa;
+            font-size: 1.1rem;
         }
 
         .about-image {
@@ -424,11 +539,12 @@
             box-shadow: var(--shadow);
             position: relative;
             transition: var(--transition);
+            border: 3px solid var(--ramadan-gold);
         }
 
         .about-image:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .about-image::before {
@@ -438,7 +554,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
+            background: var(--gold-gradient);
             opacity: 0;
             transition: var(--transition);
             z-index: 1;
@@ -461,28 +577,40 @@
 
         /* Team Section */
         .team-section {
-            background: #f9f9f9;
+            background: rgba(27, 94, 32, 0.15);
             position: relative;
+            border-top: 2px solid var(--ramadan-gold);
+            border-bottom: 2px solid var(--ramadan-gold);
         }
 
         .team-section::before {
-            content: '';
+            content: '✨';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
+            top: 20px;
+            left: 20px;
+            font-size: 2.5rem;
+            opacity: 0.3;
+            animation: twinkle 2s infinite;
+        }
+
+        .team-section::after {
+            content: '✨';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            opacity: 0.3;
+            animation: twinkle 2s infinite 1s;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
 
         .team-member {
-            background: white;
+            background: rgba(27, 94, 32, 0.1);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -490,6 +618,8 @@
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(5px);
         }
 
         .team-member.visible {
@@ -498,12 +628,13 @@
         }
 
         .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--ramadan-gold);
         }
 
         .member-image {
-            height: 300px;
+            height: 320px;
             overflow: hidden;
             position: relative;
         }
@@ -515,7 +646,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
+            background: var(--gold-gradient);
             opacity: 0;
             transition: var(--transition);
             z-index: 1;
@@ -537,51 +668,57 @@
         }
 
         .member-info {
-            padding: 20px;
+            padding: 25px;
+            background: rgba(10, 26, 15, 0.8);
         }
 
         .member-info h3 {
-            font-size: 1.5rem;
+            font-family: 'Lateef', cursive;
+            font-size: 2rem;
             margin-bottom: 5px;
-            color: var(--dark);
+            color: var(--ramadan-gold-light);
         }
 
         .member-info p {
-            color: var(--primary);
+            color: var(--ramadan-gold);
             font-weight: 500;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
         }
 
         .member-social {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
         }
 
         .member-social a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 35px;
-            height: 35px;
-            background: #f0f0f0;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: var(--dark);
+            color: var(--light);
             transition: var(--transition);
+            font-size: 1.2rem;
+            text-decoration: none;
         }
 
         .member-social a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
+            background: var(--ramadan-gold);
+            color: var(--dark);
+            transform: translateY(-5px);
         }
 
         /* Stats Section */
         .stats-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/stats-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(10, 26, 15, 0.95), rgba(27, 94, 32, 0.9)), url('images/ramadan-stats-bg.jpg') center/cover no-repeat;
             color: white;
             text-align: center;
             position: relative;
+            border-bottom: 2px solid var(--ramadan-gold);
         }
 
         .stats-section::before {
@@ -591,43 +728,53 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: var(--gold-gradient);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
         }
 
         .stat-item {
-            padding: 30px;
+            padding: 40px 20px;
             transition: var(--transition);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .stat-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--ramadan-gold);
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-family: 'Lateef', cursive;
+            font-size: 4rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--gold);
+            margin-bottom: 15px;
+            color: var(--ramadan-gold-light);
             display: block;
             transition: var(--transition);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
 
         .stat-title {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            color: #ccc;
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: rgba(10, 26, 15, 0.95);
             color: white;
             padding: 60px 0 0;
             position: relative;
+            border-top: 2px solid var(--ramadan-gold);
         }
 
         footer::before {
@@ -637,7 +784,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: var(--gold-gradient);
         }
 
         .footer-grid {
@@ -648,9 +795,10 @@
         }
 
         .footer-col h3 {
-            font-size: 1.5rem;
+            font-family: 'Lateef', cursive;
+            font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--gold);
+            color: var(--ramadan-gold);
             position: relative;
             display: inline-block;
         }
@@ -662,27 +810,34 @@
             right: 0;
             width: 50px;
             height: 3px;
-            background: var(--gradient);
+            background: var(--gold-gradient);
         }
 
         .footer-col p {
             margin-bottom: 15px;
             color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
             color: #ccc;
             transition: var(--transition);
             display: inline-block;
+            text-decoration: none;
+            font-size: 1.1rem;
         }
 
         .footer-links a:hover {
-            color: var(--primary);
-            padding-right: 5px;
+            color: var(--ramadan-gold);
+            padding-right: 8px;
         }
 
         .social-links {
@@ -694,36 +849,42 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             margin-left: 10px;
             color: white;
             transition: var(--transition);
+            font-size: 1.2rem;
+            text-decoration: none;
         }
 
         .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
+            background: var(--ramadan-gold);
+            color: var(--dark);
+            transform: translateY(-5px);
         }
 
         .phone-number {
             color: #ccc;
             text-decoration: none;
             transition: var(--transition);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
 
         .phone-number:hover {
-            color: var(--primary);
+            color: var(--ramadan-gold);
         }
 
         .footer-bottom {
             text-align: center;
-            padding: 20px 0;
+            padding: 25px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ccc;
-            font-size: 0.9rem;
+            color: #aaa;
+            font-size: 1rem;
         }
 
         /* Back to Top Button */
@@ -731,21 +892,22 @@
             position: fixed;
             bottom: 30px;
             left: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            color: white;
+            width: 55px;
+            height: 55px;
+            background: var(--gold-gradient);
+            color: var(--dark);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            font-size: 1.3rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
             cursor: pointer;
             z-index: 999;
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
+            border: none;
         }
 
         .back-to-top.active {
@@ -754,8 +916,8 @@
         }
 
         .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
         }
 
         /* Animations */
@@ -767,18 +929,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
             }
         }
 
@@ -802,11 +952,13 @@
                 top: 80px;
                 right: 0;
                 width: 100%;
-                background: white;
+                background: rgba(10, 26, 15, 0.98);
                 flex-direction: column;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
                 padding: 20px 0;
                 text-align: center;
+                backdrop-filter: blur(10px);
+                border-top: 1px solid var(--ramadan-gold);
             }
 
             nav ul.active {
@@ -814,7 +966,7 @@
             }
 
             nav ul li {
-                margin: 10px 0;
+                margin: 15px 0;
             }
 
             .mobile-menu-btn {
@@ -827,28 +979,64 @@
             
             .about-image {
                 margin-top: 40px;
+                width: 100%;
+            }
+
+            .section-title h2 {
+                font-size: 2.5rem;
             }
         }
 
         @media (max-width: 768px) {
             .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .hero-content h1 {
                 font-size: 2.2rem;
             }
 
+            .section-title h2::before, .section-title h2::after {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
             .hero-content p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
 
             .back-to-top {
                 bottom: 20px;
                 left: 20px;
-                width: 40px;
-                height: 40px;
+                width: 45px;
+                height: 45px;
                 font-size: 1rem;
+            }
+
+            .about-text h3 {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .stat-title {
+                font-size: 1.2rem;
+            }
+
+            .feature-content h4 {
+                font-size: 1.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .moon {
+                width: 100px;
+                height: 100px;
+                top: 5%;
+                left: 5%;
             }
         }
     </style>
@@ -858,8 +1046,15 @@
     <div class="progress-bar"></div>
 
     <!-- Back to Top Button -->
-    <div class="back-to-top">
+    <button class="back-to-top">
         <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- خلفية رمضانية -->
+    <div class="ramadan-background">
+        <div class="moon"></div>
+        <div class="stars" id="stars-container"></div>
+        <div class="islamic-pattern"></div>
     </div>
 
     <!-- Header -->
@@ -870,14 +1065,14 @@
                     <img src="لوجو.png" alt="KIDS SHOW">
                     <div class="logo-text">
                         <h1>KIDS SHOW</h1>
-                        <p>مكتب حفلات </p>
+                        <p>مكتب حفلات أطفال</p>
                     </div>
                 </div>
 
                 <nav>
                     <ul>
                         <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="packages.html">باقاتنا</a></li>
+                        <li><a href="packages.html">باقاتنا الرمضانية</a></li>
                         <li><a href="gallery.html">معرض الأعمال</a></li>
                         <li><a href="about.html" class="active">من نحن</a></li>
                         <li><a href="contact.html">اتصل بنا</a></li>
@@ -893,15 +1088,13 @@
 
     <!-- About Hero -->
     <section class="about-hero">
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
+        <div class="floating-lanterns">
+            <!-- سيتم إضافة الفوانيس عبر الجافاسكريبت -->
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1>من نحن</h1>
-                <p>قصة نجاحنا وخبراتنا في تنظيم الحفلات</p>
+                <h1>من نحن - رمضان كريم</h1>
+                <p>قصة نجاحنا وخبراتنا في تنظيم الحفلات الرمضانية المميزة</p>
             </div>
         </div>
     </section>
@@ -911,28 +1104,28 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <h3>KIDS SHOW - خبرة وإبداع في تنظيم الحفلات</h3>
+                    <h3>KIDS SHOW - خبرة وإبداع في تنظيم الحفلات الرمضانية</h3>
                     <p>تأسس مكتب KIDS SHOW عام 2012 بهدف تقديم خدمات تنظيم الحفلات والمناسبات بأعلى معايير الجودة والاحترافية. على مدار أكثر من عقد من الزمن، استطعنا كسب ثقة المئات من العملاء من خلال تقديم تجارب استثنائية لا تنسى.</p>
-                    <p>نؤمن في كيدز شو أن كل مناسبة هي قصة فريدة تستحق أن تروى بأجمل تفاصيلها، ولذلك نحرص على تقديم حلول مخصصة تلبي تطلعات عملائنا وتجعل من مناسباتهم لحظات استثنائية.</p>
+                    <p>في شهر رمضان المبارك، نقدم لكم باقات وحفلات خاصة تجمع بين أجواء الفرح والبهجة والروحانيات الرمضانية. نؤمن في كيدز شو أن كل مناسبة هي قصة فريدة تستحق أن تروى بأجمل تفاصيلها، ولذلك نحرص على تقديم حلول مخصصة تلبي تطلعات عملائنا وتجعل من مناسباتهم لحظات استثنائية.</p>
                     
                     <div class="about-features">
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-medal"></i>
+                                <i class="fas fa-moon"></i>
                             </div>
                             <div class="feature-content">
-                                <h4>جودة عالية</h4>
-                                <p>نستخدم أفضل المواد والخامات لضمان جودة لا تضاهى</p>
+                                <h4>حفلات رمضانية مميزة</h4>
+                                <p>نصمم حفلات خاصة تناسب أجواء شهر رمضان الكريم مع زينة وفوانيس مميزة</p>
                             </div>
                         </div>
                         
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-lightbulb"></i>
+                                <i class="fas fa-star"></i>
                             </div>
                             <div class="feature-content">
-                                <h4>إبداع مميز</h4>
-                                <p>تصاميم فريدة ومبتكرة تناسب جميع الأذواق</p>
+                                <h4>جودة وإبداع</h4>
+                                <p>نستخدم أفضل المواد والخامات لضمان جودة لا تضاهى مع تصميمات فريدة تناسب جميع الأذواق</p>
                             </div>
                         </div>
                         
@@ -942,16 +1135,26 @@
                             </div>
                             <div class="feature-content">
                                 <h4>فريق محترف</h4>
-                                <p>خبراء في تنظيم الحفلات مع سنوات من الخبرة</p>
+                                <p>خبراء في تنظيم الحفلات مع سنوات من الخبرة في تقديم أفضل الخدمات</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>روحانيات رمضانية</h4>
+                                <p>نحرص على دمج القيم والروحانيات الرمضانية في جميع حفلاتنا</p>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="contact.html" class="btn btn-primary">تواصل معنا</a>
+                    <a href="contact.html" class="btn btn-primary">تواصل معنا في رمضان</a>
                 </div>
                 
                 <div class="about-image fade-in">
-                    <img src="ماسكات.jpg" alt="فريق  KIDS SHOW">
+                    <img src="ماسكات.jpg" alt="فريق KIDS SHOW الرمضاني">
                 </div>
             </div>
         </div>
@@ -961,17 +1164,17 @@
     <section class="team-section">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>فريقنا المحترف</h2>
-                <p>خبراء في تنظيم الحفلات والمناسبات</p>
+                <h2>فريقنا الرمضاني المحترف</h2>
+                <p>خبراء في تنظيم الحفلات والمناسبات الرمضانية</p>
             </div>
             
             <div class="team-grid">
                 <div class="team-member fade-in">
                     <div class="member-image">
-                        <img src="ملك.png" alt=" ملك ">
+                        <img src="ملك.png" alt="أ/ ملك">
                     </div>
                     <div class="member-info">
-                        <h3>أ\ملك</h3>
+                        <h3>أ/ملك</h3>
                         <p>مدير تنفيذي</p>
                         <div class="member-social">
                             <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
@@ -983,10 +1186,10 @@
                 
                 <div class="team-member fade-in">
                     <div class="member-image">
-                        <img src="مريان.png" alt=" مدير عام ">
+                        <img src="مريان.png" alt="أ/ مريان">
                     </div>
                     <div class="member-info">
-                        <h3>أ\مريان</h3>
+                        <h3>أ/مريان</h3>
                         <p>مدير عام</p>
                         <div class="member-social">
                             <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
@@ -998,10 +1201,10 @@
 
                 <div class="team-member fade-in">
                     <div class="member-image">
-                    <img src="ايمن.png" alt=" أيمن ">
+                        <img src="ايمن.png" alt="أ/ أيمن">
                     </div>
                     <div class="member-info">
-                        <h3>أ\أيمن</h3>
+                        <h3>أ/أيمن</h3>
                         <p>مشرف تنفيذي</p>
                         <div class="member-social">
                             <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
@@ -1034,7 +1237,7 @@
                 </div>
                 
                 <div class="stat-item fade-in">
-                    <div class="stat-number" data-target="3578">0</div>
+                    <div class="stat-number" data-target="578">0</div>
                     <div class="stat-title">جائزة وتكريم</div>
                 </div>
             </div>
@@ -1046,8 +1249,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3> KIDS SHOW </h3>
-                    <p>نقدم لكم أفضل خدمات تنظيم الحفلات والمناسبات بفريق محترف وأجواء ساحرة</p>
+                    <h3>KIDS SHOW</h3>
+                    <p>نقدم لكم أفضل خدمات تنظيم الحفلات والمناسبات الرمضانية بفريق محترف وأجواء روحانية ساحرة</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/kidsshow721?igsh=MTkwMHVyOTg2dTNyaw%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
@@ -1067,28 +1270,29 @@
                 </div>
 
                 <div class="footer-col">
-                    <h3>خدماتنا</h3>
+                    <h3>خدماتنا الرمضانية</h3>
                     <ul class="footer-links">
-                        <li><a href="gallery.html">حفلات أعياد الميلاد</a></li>
-                        <li><a href="gallery.html">حفلات السبوع</a></li>
-                        <li><a href="gallery.html">الحفلات الخاصة</a></li>
-                        <li><a href="gallery.html">خدمات الديكور</a></li>
+                        <li><a href="gallery.html">حفلات أعياد الميلاد في رمضان</a></li>
+                        <li><a href="gallery.html">حفلات السبوع الرمضانية</a></li>
+                        <li><a href="gallery.html">الحفلات الرمضانية الخاصة</a></li>
+                        <li><a href="gallery.html">خدمات الديكور الرمضاني</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h3>اتصل بنا</h3>
-                    <p><i class="fas fa-map-marker-alt"></i>القاهرة</p>
-                    <p><i class="fas fa-phone"></i><a href="tel:01100624481"  class="phone-number">01100624481</a></p>
-                    <p><i class="fas fa-phone"></i><a href="tel:01013272894"  class="phone-number">01013272894</a></p>
-                    <p><i class="fas fa-phone"></i><a href="tel:01223461549"  class="phone-number">01223461549</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</p>
+                    <p><i class="fas fa-phone"></i><a href="tel:01100624481" class="phone-number">01100624481</a></p>
+                    <p><i class="fas fa-phone"></i><a href="tel:01013272894" class="phone-number">01013272894</a></p>
+                    <p><i class="fas fa-phone"></i><a href="tel:01223461549" class="phone-number">01223461549</a></p>
+                    <p><i class="fas fa-envelope"></i> info@kidsshow.com</p>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2026 KIDS SHOW. جميع الحقوق محفوظة</p>
+                <p>&copy; 2026 KIDS SHOW. جميع الحقوق محفوظة | رمضان كريم</p>
             </div>
         </div>
     </footer>
@@ -1096,6 +1300,31 @@
     <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // إنشاء النجوم العشوائية
+            const starsContainer = document.getElementById('stars-container');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.width = Math.random() * 3 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = Math.random() * 2 + 2 + 's';
+                starsContainer.appendChild(star);
+            }
+
+            // إنشاء الفوانيس العائمة
+            const lanternsContainer = document.querySelector('.floating-lanterns');
+            for (let i = 0; i < 8; i++) {
+                const lantern = document.createElement('div');
+                lantern.classList.add('lantern');
+                lantern.style.left = Math.random() * 100 + '%';
+                lantern.style.animationDelay = Math.random() * 10 + 's';
+                lantern.style.animationDuration = Math.random() * 10 + 15 + 's';
+                lanternsContainer.appendChild(lantern);
+            }
+
             // Mobile Menu Toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const nav = document.querySelector('nav ul');
@@ -1109,9 +1338,9 @@
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
-                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
                 } else {
-                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
                 }
             });
 
@@ -1193,6 +1422,26 @@
             
             // Run on scroll
             window.addEventListener('scroll', animateStats);
+            
+            // إضافة تأثيرات إضافية للقمر
+            const moon = document.querySelector('.moon');
+            setInterval(() => {
+                moon.style.boxShadow = `
+                    0 0 ${60 + Math.random() * 20}px #FFD54F,
+                    0 0 ${100 + Math.random() * 30}px rgba(255, 213, 79, ${0.5 + Math.random() * 0.3}),
+                    inset 0 0 ${20 + Math.random() * 10}px rgba(255, 255, 255, ${0.8 + Math.random() * 0.2})
+                `;
+            }, 2000);
+
+            // Animate team members on load
+            setTimeout(() => {
+                const teamMembers = document.querySelectorAll('.team-member');
+                teamMembers.forEach((member, index) => {
+                    setTimeout(() => {
+                        member.classList.add('visible');
+                    }, index * 300);
+                });
+            }, 500);
         });
     </script>
 </body>
