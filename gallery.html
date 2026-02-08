@@ -3,40 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KIDS SHOW | معرض الأعمال</title>
+    <title>KIDS SHOW | معرض الأعمال الرمضانية</title>
     <link rel="icon" href="لوجو.png" type="image/png">
     <link rel="shortcut icon" href="لوجو.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lateef:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Variables */
+        /* CSS Variables - رمضانية */
         :root {
-            --primary: #e83e8c;
-            --primary-dark: #c2185b;
-            --gold: #FFD700;
+            --ramadan-green: #1B5E20;
+            --ramadan-green-light: #2E8B57;
+            --ramadan-gold: #D4AF37;
+            --ramadan-gold-light: #FFD700;
+            --ramadan-brown: #8B4513;
+            --ramadan-brown-light: #A0522D;
             --dark: #1a1a1a;
-            --light: #f8f9fa;
+            --light: #FFF9E6;
             --transition: all 0.3s ease;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --gradient: linear-gradient(135deg, #e83e8c 0%, #ff6b9d 100%);
+            --ramadan-gradient: linear-gradient(135deg, #1B5E20 0%, #2E8B57 50%, #8B4513 100%);
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #FFA500 100%);
+            --ramadan-shadow: 0 10px 30px rgba(27, 94, 32, 0.15);
         }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 12px;
         }
 
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
             border-radius: 10px;
         }
 
+        ::-webkit-scrollbar-thumb {
+            background: var(--ramadan-gradient);
+            border-radius: 10px;
+            border: 2px solid #f1f1f1;
+        }
+
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+            background: linear-gradient(135deg, #2E8B57 0%, #1B5E20 50%, #A0522D 100%);
         }
 
         /* Progress Bar */
@@ -46,9 +56,10 @@
             left: 0;
             width: 0%;
             height: 4px;
-            background: var(--gradient);
+            background: var(--gold-gradient);
             z-index: 1001;
             transition: width 0.3s ease;
+            box-shadow: 0 0 10px var(--ramadan-gold);
         }
 
         /* Reset & Base Styles */
@@ -63,62 +74,183 @@
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            font-family: 'Lateef', 'Amiri', serif;
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF3CD 100%);
             color: var(--dark);
-            line-height: 1.7;
+            line-height: 1.8;
             overflow-x: hidden;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(46, 139, 87, 0.1) 0%, transparent 20%);
+        }
+
+        /* رمضان decorations */
+        .ramadan-decoration {
+            position: fixed;
+            z-index: -1;
+        }
+
+        .moon {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, #FFD700 0%, #F4D03F 70%, #D4AF37 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 50px rgba(255, 215, 0, 0.8),
+                0 0 100px rgba(255, 215, 0, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: moonGlow 6s infinite alternate ease-in-out;
+            z-index: -1;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #FFD700, transparent),
+                radial-gradient(2px 2px at 40px 70px, #FFD700, transparent),
+                radial-gradient(1px 1px at 90px 40px, #FFD700, transparent),
+                radial-gradient(1px 1px at 130px 80px, #FFD700, transparent),
+                radial-gradient(2px 2px at 160px 120px, #FFD700, transparent),
+                radial-gradient(1px 1px at 200px 60px, #FFD700, transparent),
+                radial-gradient(2px 2px at 250px 90px, #FFD700, transparent),
+                radial-gradient(1px 1px at 300px 40px, #FFD700, transparent),
+                radial-gradient(2px 2px at 350px 120px, #FFD700, transparent);
+            background-repeat: repeat;
+            z-index: -1;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        /* رمضان banner */
+        .ramadan-banner {
+            background: var(--ramadan-gradient);
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: 90px;
+            box-shadow: 0 5px 15px rgba(27, 94, 32, 0.3);
+            border-bottom: 3px solid var(--ramadan-gold);
+        }
+
+        .ramadan-banner .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner-lanterns {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .banner-lantern {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: linear-gradient(to bottom, #FFD700 0%, #FFA500 100%);
+            border-radius: 20px 20px 5px 5px;
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.7);
+            animation: swing 4s infinite ease-in-out;
+        }
+
+        .banner-lantern::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 15px;
+            background: #8B4513;
+            border-radius: 8px;
+        }
+
+        .banner-lantern::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 20px;
+            background: #8B4513;
         }
 
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 15px;
         }
 
         section {
             padding: 80px 0;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
+            font-size: 2.8rem;
+            color: var(--ramadan-green);
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
+            font-family: 'Lateef', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title h2::before,
+        .section-title h2::after {
+            content: '🌙';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+
+        .section-title h2::before {
+            right: -50px;
         }
 
         .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
+            left: -50px;
         }
 
         .section-title p {
-            color: #666;
-            font-size: 1.1rem;
+            color: var(--ramadan-brown);
+            font-size: 1.3rem;
             max-width: 700px;
             margin: 0 auto;
+            background: rgba(255, 249, 230, 0.8);
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: 1px solid var(--ramadan-gold);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 15px 40px;
             border-radius: 50px;
-            font-weight: 500;
+            font-weight: 700;
             text-align: center;
             transition: var(--transition);
             border: none;
@@ -126,6 +258,9 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            font-family: 'Lateef', serif;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
         }
 
         .btn::before {
@@ -145,14 +280,19 @@
         }
 
         .btn-primary {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            background: var(--gold-gradient);
+            color: var(--ramadan-green);
+            box-shadow: 
+                0 4px 15px rgba(212, 175, 55, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.3);
+            border: 2px solid var(--ramadan-gold);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(232, 62, 140, 0.4);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 8px 25px rgba(212, 175, 55, 0.6),
+                0 0 30px rgba(255, 215, 0, 0.5);
         }
 
         /* Header Styles */
@@ -162,42 +302,57 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, rgba(255, 249, 230, 0.98) 0%, rgba(255, 243, 205, 0.98) 100%);
+            box-shadow: 0 5px 20px rgba(27, 94, 32, 0.15);
             backdrop-filter: blur(10px);
             transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            border-image: var(--ramadan-gradient) 1;
+        }
+
+        .header-scrolled {
+            background: rgba(255, 249, 230, 0.95);
+            box-shadow: 0 5px 20px rgba(27, 94, 32, 0.2);
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            height: 90px;
         }
 
         .logo {
             display: flex;
             align-items: center;
+            position: relative;
         }
 
         .logo img {
-            height: 50px;
-            margin-left: 10px;
+            height: 60px;
+            margin-left: 15px;
             transition: var(--transition);
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
         }
 
         .logo:hover img {
-            transform: rotate(5deg);
+            transform: rotate(5deg) scale(1.1);
         }
 
         .logo-text h1 {
-            color: var(--primary);
-            font-size: 1.8rem;
+            color: var(--ramadan-green);
+            font-size: 2.2rem;
+            font-family: 'Lateef', serif;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .logo-text p {
-            color: #666;
-            font-size: 0.9rem;
+            color: var(--ramadan-brown);
+            font-size: 1.1rem;
+            background: linear-gradient(45deg, var(--ramadan-gold), var(--ramadan-gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
         }
 
         nav ul {
@@ -206,17 +361,31 @@
         }
 
         nav ul li {
-            margin-right: 25px;
+            margin-right: 30px;
+            position: relative;
         }
 
         nav ul li a {
-            color: var(--dark);
+            color: var(--ramadan-green);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
             transition: var(--transition);
             position: relative;
             padding: 5px 0;
+            font-family: 'Lateef', serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul li a::before {
+            content: '✦';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--ramadan-gold);
         }
 
         nav ul li a::after {
@@ -225,14 +394,22 @@
             bottom: 0;
             right: 0;
             width: 0;
-            height: 2px;
-            background: var(--gradient);
+            height: 3px;
+            background: var(--gold-gradient);
             transition: var(--transition);
+            border-radius: 3px;
         }
 
         nav ul li a:hover,
         nav ul li a.active {
-            color: var(--primary);
+            color: var(--ramadan-gold);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        nav ul li a:hover::before,
+        nav ul li a.active::before {
+            opacity: 1;
+            left: -15px;
         }
 
         nav ul li a:hover::after,
@@ -242,27 +419,34 @@
 
         .mobile-menu-btn {
             display: none;
-            background: none;
-            border: none;
+            background: var(--gold-gradient);
+            border: 2px solid var(--ramadan-gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             font-size: 1.5rem;
-            color: var(--dark);
+            color: var(--ramadan-green);
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
 
         .mobile-menu-btn:hover {
-            color: var(--primary);
+            transform: rotate(90deg);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
         }
 
         /* Gallery Hero */
         .gallery-hero {
             height: 60vh;
-            background: linear-gradient(rgb(250, 0, 250), rgb(0, 50, 250)), url('images/gallery-bg.jpg') center/cover no-repeat;
+            background: 
+                linear-gradient(rgba(27, 94, 32, 0.9), rgba(139, 69, 19, 0.8)),
+                url('images/gallery-bg.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
-            margin-top: 80px;
+            margin-top: 90px;
             position: relative;
             overflow: hidden;
         }
@@ -274,118 +458,196 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e83e8c' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23FFD700' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             opacity: 0.3;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 
+                2px 2px 10px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(255, 215, 0, 0.5);
+            font-family: 'Lateef', serif;
+            background: linear-gradient(45deg, #FFD700, #FFF, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.4rem;
+            margin-bottom: 40px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             animation: fadeInUp 1s ease 0.2s forwards;
             opacity: 0;
+            background: rgba(27, 94, 32, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid var(--ramadan-gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* Floating Elements */
-        .floating-elements {
+        /* رمضان Lanterns */
+        .lanterns-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            pointer-events: none;
             z-index: 1;
         }
 
-        .floating-element {
+        .lantern {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
+            width: 70px;
+            height: 90px;
+            background: linear-gradient(45deg, #FFD700 0%, #FFA500 30%, #FF8C00 70%, #FF4500 100%);
+            border-radius: 35px 35px 15px 15px;
+            box-shadow: 
+                0 0 30px rgba(255, 165, 0, 0.8),
+                0 0 60px rgba(255, 165, 0, 0.4),
+                inset 0 -10px 20px rgba(0, 0, 0, 0.2);
+            animation: swing 8s infinite ease-in-out;
+            filter: brightness(1.2);
         }
 
-        .floating-element:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 25px;
+            background: linear-gradient(to bottom, #8B4513 0%, #A0522D 100%);
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .floating-element:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 2s;
-        }
-
-        .floating-element:nth-child(3) {
-            width: 40px;
+        .lantern::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
             height: 40px;
-            top: 40%;
-            left: 20%;
-            animation-delay: 4s;
+            background: linear-gradient(to bottom, #8B4513 0%, #A0522D 100%);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .lantern-decoration {
+            position: absolute;
+            width: 100%;
+            height: 25px;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 8px,
+                #8B4513 8px,
+                #8B4513 16px
+            );
+            bottom: 15px;
+            border-radius: 0 0 15px 15px;
         }
 
         /* Gallery Section */
+        .gallery-section {
+            background: linear-gradient(135deg, #FFF3CD 0%, #FFEAA7 100%);
+            position: relative;
+        }
+
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: var(--ramadan-gradient);
+        }
+
         .gallery-filter {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             background: white;
-            padding: 15px;
+            padding: 20px;
             border-radius: 50px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--ramadan-shadow);
+            border: 2px solid var(--ramadan-gold);
+            gap: 10px;
         }
 
         .filter-btn {
             background: none;
             border: none;
-            padding: 10px 25px;
+            padding: 12px 30px;
             margin: 5px;
             cursor: pointer;
             border-radius: 30px;
             transition: var(--transition);
             font-weight: 500;
+            font-family: 'Lateef', serif;
+            font-size: 1.2rem;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.1);
+            transition: var(--transition);
         }
 
         .filter-btn.active {
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            background: var(--gold-gradient);
+            color: var(--ramadan-green);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            border-color: var(--ramadan-gold);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active::before {
+            width: 100%;
         }
 
         .filter-btn:not(.active):hover {
-            color: var(--primary);
+            color: var(--ramadan-green);
+            border-color: var(--ramadan-gold);
+            background: rgba(212, 175, 55, 0.05);
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .gallery-item {
             position: relative;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            height: 300px;
-            box-shadow: var(--shadow);
+            height: 320px;
+            box-shadow: 
+                0 10px 30px rgba(27, 94, 32, 0.15),
+                0 0 20px rgba(212, 175, 55, 0.1);
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
-            background: #f8f9fa;
+            background: #FFF9E6;
+            border: 3px solid var(--ramadan-gold);
         }
 
         .gallery-item.visible {
@@ -394,8 +656,10 @@
         }
 
         .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 
+                0 20px 40px rgba(27, 94, 32, 0.25),
+                0 0 30px rgba(212, 175, 55, 0.2);
         }
 
         .gallery-item::before {
@@ -405,7 +669,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient);
+            background: var(--gold-gradient);
             opacity: 0;
             transition: var(--transition);
             z-index: 1;
@@ -415,7 +679,21 @@
             opacity: 0.1;
         }
 
-        /* تحسين شكل الصور */
+        /* رمضان badge للفيديوهات */
+        .video-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--ramadan-gradient);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 3;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid white;
+        }
+
         .image-container {
             width: 100%;
             height: 100%;
@@ -427,7 +705,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.7s ease;
             display: block;
         }
 
@@ -455,14 +733,17 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: linear-gradient(45deg, rgba(27, 94, 32, 0.9), rgba(139, 69, 19, 0.9));
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
             transition: var(--transition);
             z-index: 2;
             cursor: pointer;
+            padding: 20px;
+            text-align: center;
         }
 
         .gallery-item:hover .gallery-overlay {
@@ -470,17 +751,32 @@
         }
 
         .gallery-overlay i {
-            color: white;
-            font-size: 2.5rem;
+            color: var(--ramadan-gold);
+            font-size: 3rem;
             transform: scale(0.8);
             transition: var(--transition);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            margin-bottom: 15px;
         }
 
         .gallery-item:hover .gallery-overlay i {
-            transform: scale(1);
+            transform: scale(1.1) rotate(360deg);
         }
 
-        /* Lightbox */
+        .video-info {
+            color: white;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .video-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Lightbox - رمضاني */
         .lightbox {
             position: fixed;
             top: 0;
@@ -507,6 +803,12 @@
             position: relative;
             transform: scale(0.8);
             transition: transform 0.3s ease;
+            border: 5px solid var(--ramadan-gold);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 
+                0 0 50px rgba(212, 175, 55, 0.5),
+                0 0 100px rgba(212, 175, 55, 0.3);
         }
 
         .lightbox.active .lightbox-content {
@@ -516,25 +818,31 @@
         .lightbox img {
             max-width: 100%;
             max-height: 90vh;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            display: block;
         }
 
         .close-lightbox {
             position: absolute;
             top: -50px;
             right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
+            background: var(--gold-gradient);
+            border: 2px solid var(--ramadan-gold);
+            color: var(--ramadan-green);
+            font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close-lightbox:hover {
-            color: var(--primary);
             transform: rotate(90deg);
+            background: var(--ramadan-green);
+            color: var(--ramadan-gold);
         }
 
         .lightbox-nav {
@@ -548,9 +856,9 @@
         }
 
         .lightbox-nav button {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
+            background: var(--gold-gradient);
+            border: 2px solid var(--ramadan-gold);
+            color: var(--ramadan-green);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -561,11 +869,12 @@
         }
 
         .lightbox-nav button:hover {
-            background: var(--primary);
+            background: var(--ramadan-green);
+            color: var(--ramadan-gold);
             transform: scale(1.1);
         }
 
-        /* Video Modal */
+        /* Video Modal - رمضاني */
         .video-modal {
             display: none;
             position: fixed;
@@ -574,7 +883,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
         }
 
         .video-modal.active {
@@ -586,36 +895,59 @@
         .video-modal-content {
             position: relative;
             width: 80%;
-            max-width: 800px;
+            max-width: 1000px;
+            border: 5px solid var(--ramadan-gold);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 
+                0 0 50px rgba(212, 175, 55, 0.5),
+                0 0 100px rgba(212, 175, 55, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .video-modal.active .video-modal-content {
+            transform: scale(1);
         }
 
         .video-modal video {
             width: 100%;
             height: auto;
-            border-radius: 8px;
+            display: block;
         }
 
         .close-video-modal {
             position: absolute;
-            top: -40px;
+            top: -50px;
             right: 0;
-            color: white;
-            font-size: 35px;
+            background: var(--gold-gradient);
+            border: 2px solid var(--ramadan-gold);
+            color: var(--ramadan-green);
+            font-size: 2rem;
             font-weight: bold;
             cursor: pointer;
             transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close-video-modal:hover {
-            color: var(--primary);
+            background: var(--ramadan-green);
+            color: var(--ramadan-gold);
+            transform: rotate(90deg);
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: linear-gradient(135deg, var(--ramadan-green) 0%, #1B5E20 100%);
             color: white;
-            padding: 60px 0 0;
+            padding: 80px 0 0;
             position: relative;
+            overflow: hidden;
         }
 
         footer::before {
@@ -625,22 +957,27 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: var(--gold-gradient);
+            box-shadow: 0 0 20px var(--ramadan-gold);
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-col h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--ramadan-gold);
             position: relative;
             display: inline-block;
+            font-family: 'Lateef', serif;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .footer-col h3::after {
@@ -648,82 +985,155 @@
             position: absolute;
             bottom: -8px;
             right: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--gradient);
+            width: 60px;
+            height: 4px;
+            background: var(--gold-gradient);
+            border-radius: 4px;
         }
 
         .footer-col p {
-            margin-bottom: 15px;
-            color: #ccc;
+            margin-bottom: 20px;
+            color: #E8F5E9;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .footer-links a {
-            color: #ccc;
+            color: #C8E6C9;
             transition: var(--transition);
             display: inline-block;
+            font-size: 1.1rem;
+            position: relative;
+            padding-right: 15px;
+        }
+
+        .footer-links a::before {
+            content: '🌙';
+            position: absolute;
+            right: -20px;
+            opacity: 0;
+            transition: var(--transition);
         }
 
         .footer-links a:hover {
-            color: var(--primary);
-            padding-right: 5px;
+            color: var(--ramadan-gold);
+            padding-right: 25px;
+            transform: translateX(-5px);
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            right: 0;
         }
 
         .social-links {
             display: flex;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            margin-left: 10px;
+            margin-left: 15px;
             color: white;
             transition: var(--transition);
+            font-size: 1.3rem;
+            border: 2px solid transparent;
         }
 
         .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
+            background: var(--gold-gradient);
+            color: var(--ramadan-green);
+            transform: translateY(-5px) rotate(360deg);
+            border-color: var(--ramadan-gold);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .phone-number {
+            color: #C8E6C9;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .phone-number i {
+            color: var(--ramadan-gold);
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        .phone-number:hover {
+            color: var(--ramadan-gold);
+            transform: translateX(-5px);
         }
 
         .footer-bottom {
             text-align: center;
-            padding: 20px 0;
+            padding: 30px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ccc;
-            font-size: 0.9rem;
+            color: #C8E6C9;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ramadan-message {
+            font-size: 1.4rem;
+            color: var(--ramadan-gold);
+            margin-top: 15px;
+            font-family: 'Lateef', serif;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            animation: textGlow 3s infinite alternate;
         }
 
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            color: white;
+            bottom: 40px;
+            left: 40px;
+            width: 60px;
+            height: 60px;
+            background: var(--gold-gradient);
+            color: var(--ramadan-green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(232, 62, 140, 0.3);
+            font-size: 1.5rem;
+            box-shadow: 
+                0 4px 20px rgba(212, 175, 55, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.3);
             cursor: pointer;
             z-index: 999;
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
+            border: 3px solid white;
+            transform-style: preserve-3d;
+        }
+
+        .back-to-top::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: var(--ramadan-gradient);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 3s infinite linear;
         }
 
         .back-to-top.active {
@@ -732,15 +1142,17 @@
         }
 
         .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4);
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 
+                0 8px 30px rgba(212, 175, 55, 0.6),
+                0 0 30px rgba(255, 215, 0, 0.5);
         }
 
         /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -748,23 +1160,53 @@
             }
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
+        @keyframes swing {
+            0%, 100% { transform: translateY(0) rotate(-8deg); }
+            50% { transform: translateY(-30px) rotate(8deg); }
+        }
+
+        @keyframes moonGlow {
+            0% { 
+                box-shadow: 
+                    0 0 50px rgba(255, 215, 0, 0.8),
+                    0 0 100px rgba(255, 215, 0, 0.4),
+                    inset 0 0 30px rgba(255, 255, 255, 0.5);
             }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
+            100% { 
+                box-shadow: 
+                    0 0 80px rgba(255, 215, 0, 1),
+                    0 0 150px rgba(255, 215, 0, 0.6),
+                    inset 0 0 40px rgba(255, 255, 255, 0.7);
             }
-            100% {
-                transform: translateY(0) rotate(360deg);
-            }
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes floatRight {
+            0% { transform: translateX(-100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(100vw) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.6); }
         }
 
         /* Fade In Animation for Scroll */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .fade-in.visible {
@@ -773,18 +1215,36 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.4rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
         @media (max-width: 992px) {
             nav ul {
                 display: none;
-                position: absolute;
-                top: 80px;
+                position: fixed;
+                top: 90px;
                 right: 0;
                 width: 100%;
-                background: white;
+                background: linear-gradient(135deg, rgba(255, 249, 230, 0.98) 0%, rgba(255, 243, 205, 0.98) 100%);
                 flex-direction: column;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                padding: 20px 0;
+                box-shadow: 0 10px 30px rgba(27, 94, 32, 0.2);
+                padding: 30px 0;
                 text-align: center;
+                backdrop-filter: blur(10px);
+                border-top: 3px solid var(--ramadan-gold);
+                max-height: calc(100vh - 90px);
+                overflow-y: auto;
             }
 
             nav ul.active {
@@ -792,15 +1252,38 @@
             }
 
             nav ul li {
-                margin: 10px 0;
+                margin: 15px 0;
             }
 
-            .mobile-menu-btn {
+            nav ul li a {
+                font-size: 1.4rem;
+                padding: 10px 20px;
                 display: block;
             }
 
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2::before,
+            .section-title h2::after {
+                display: none;
+            }
+
+            .gallery-filter {
+                padding: 15px;
+                border-radius: 20px;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 1.1rem;
             }
         }
 
@@ -809,29 +1292,47 @@
                 font-size: 2rem;
             }
 
+            .section-title p {
+                font-size: 1.1rem;
+                padding: 10px 20px;
+            }
+
             .hero-content h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
             .hero-content p {
-                font-size: 1rem;
-            }
-
-            .gallery-filter {
-                flex-direction: column;
-                border-radius: 15px;
-            }
-
-            .filter-btn {
-                margin: 5px 0;
+                font-size: 1.1rem;
+                padding: 15px;
             }
 
             .back-to-top {
                 bottom: 20px;
                 left: 20px;
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .ramadan-banner {
                 font-size: 1rem;
+                padding: 10px 0;
+            }
+
+            .moon {
+                width: 80px;
+                height: 80px;
+                top: 20px;
+                left: 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .gallery-item {
+                height: 280px;
             }
 
             .lightbox-nav {
@@ -847,10 +1348,48 @@
             .video-modal-content {
                 width: 95%;
             }
+
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-filter {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                margin: 2px 0;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- رمضان Decorations -->
+    <div class="moon"></div>
+    <div class="stars"></div>
+    
     <!-- Progress Bar -->
     <div class="progress-bar"></div>
 
@@ -860,24 +1399,24 @@
     </div>
 
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container">
             <div class="header-container">
                 <div class="logo">
                     <img src="لوجو.png" alt="KIDS SHOW">
                     <div class="logo-text">
                         <h1> KIDS SHOW </h1>
-                        <p>مكتب حفلات </p>
+                        <p>مكتب حفلات رمضان</p>
                     </div>
                 </div>
 
                 <nav>
                     <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="packages.html">باقاتنا</a></li>
-                        <li><a href="gallery.html" class="active">معرض الأعمال</a></li>
-                        <li><a href="about.html">من نحن</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="index.html">🏠 الرئيسية</a></li>
+                        <li><a href="packages.html">🎁 باقاتنا</a></li>
+                        <li><a href="gallery.html" class="active">🖼️ معرض الأعمال</a></li>
+                        <li><a href="about.html">👥 من نحن</a></li>
+                        <li><a href="contact.html">📞 اتصل بنا</a></li>
                     </ul>
                 </nav>
 
@@ -888,17 +1427,21 @@
         </div>
     </header>
 
+    <!-- رمضان Banner -->
+    <div class="ramadan-banner">
+        <div class="banner-lanterns" id="bannerLanterns"></div>
+        <div class="container">
+            <span>🌙 رمضان كريم 🌙 | معرض الأعمال الرمضانية | خصومات خاصة 🌙</span>
+        </div>
+    </div>
+
     <!-- Gallery Hero -->
     <section class="gallery-hero">
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-        </div>
+        <div class="lanterns-container" id="lanterns-container"></div>
         <div class="container">
             <div class="hero-content">
-                <h1>معرض أعمالنا</h1>
-                <p>بعض من أحدث تصاميمنا التي نفخر بها</p>
+                <h1>معرض أعمالنا الرمضانية 🎪</h1>
+                <p>تصفح أفضل تصاميمنا الرمضانية لحفلات الأطفال في شهر الخير والبركة 🌙</p>
             </div>
         </div>
     </section>
@@ -907,21 +1450,111 @@
     <section class="gallery-section">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>ألبوم الصور</h2>
-                <p>تصفح بعضاً من أحدث أعمالنا في تنظيم الحفلات والمناسبات</p>
+                <h2>🖼️ ألبوم الصور الرمضانية 🖼️</h2>
+                <p>أجمل اللحظات في حفلات رمضان مع KIDS SHOW 🌟</p>
             </div>
 
             <div class="gallery-filter fade-in">
-                <button class="filter-btn active" data-filter="all">الكل</button>
-                <button class="filter-btn" data-filter="Dicoration">ديكورات</button>
-                <button class="filter-btn" data-filter="Jump">نطاطة</button>
-                <button class="filter-btn" data-filter="Caractors">الشخصيات</button>
-                <button class="filter-btn" data-filter="week">حفلات للسبوع</button>
-                <button class="filter-btn" data-filter="birthday">أعياد الميلاد</button>
-                <button class="filter-btn" data-filter="video">فيديو</button>
+                <button class="filter-btn active" data-filter="all">🌙 الكل</button>
+                <button class="filter-btn" data-filter="Dicoration">🕌 ديكورات</button>
+                <button class="filter-btn" data-filter="Jump">🎪 نطاطة</button>
+                <button class="filter-btn" data-filter="Caractors">🎭 الشخصيات</button>
+                <button class="filter-btn" data-filter="week">🍼 حفلات للسبوع</button>
+                <button class="filter-btn" data-filter="birthday">🎂 أعياد الميلاد</button>
+                <button class="filter-btn" data-filter="video">🎥 فيديو</button>
             </div>
 
+        
             <div class="gallery-grid">
+
+
+                <div class="gallery-item fade-in" data-category="Caractors">
+                    <div class="image-container">
+                        <img src="TOP EVENT CATEING_page-0001.jpg" alt="منيو رمضاني">
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+
+
+                <div class="gallery-item fade-in" data-category="Caractors">
+                    <div class="image-container">
+                        <img src="TOP EVENT CATEING_page-0002.jpg" alt="منيو رمضاني">
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+
+
+                <div class="gallery-item fade-in" data-category="Caractors">
+                    <div class="image-container">
+                        <img src="TOP EVENT CATEING_page-0003.jpg" alt="منيو رمضاني">
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+
+
+                <div class="gallery-item fade-in" data-category="Caractors">
+                    <div class="image-container">
+                        <img src="TOP EVENT CATEING_page-0004.jpg" alt="منيو رمضاني">
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+
+
+                <div class="gallery-item fade-in" data-category="Caractors">
+                    <div class="image-container">
+                        <img src="TOP EVENT CATEING_page-0005.jpg" alt="منيو رمضاني">
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+
+
+                <div class="gallery-item fade-in" data-category="Caractors">
+                    <div class="image-container">
+                        <img src="TOP EVENT CATEING_page-0006.jpg" alt="منيو رمضاني">
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+
+
+                <div class="gallery-item fade-in" data-category="Caractors">
+                    <div class="image-container">
+                        <img src="TOP EVENT CATEING_page-0007.jpg" alt="منيو رمضاني">
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+
+
+                <div class="gallery-item fade-in" data-category="Caractors">
+                    <div class="image-container">
+                        <img src="TOP EVENT CATEING_page-0008.jpg" alt="منيو رمضاني">
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+
                 <!-- الفيديوهات -->
                 <div class="gallery-item fade-in" data-category="video">
                     <div class="video-container">
@@ -2197,6 +2830,7 @@
         </div>
     </section>
 
+
     <!-- Lightbox للصور -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-nav">
@@ -2209,7 +2843,7 @@
         </div>
     </div>
 
-    <!-- Video Modal (واحد فقط) -->
+    <!-- Video Modal -->
     <div id="videoModal" class="video-modal">
         <span class="close-video-modal">&times;</span>
         <div class="video-modal-content">
@@ -2224,8 +2858,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>KIDS SHOW</h3>
-                    <p>نقدم لكم أفضل خدمات تنظيم الحفلات والمناسبات بفريق محترف وأجواء ساحرة</p>
+                    <h3>KIDS SHOW رمضان 🌙</h3>
+                    <p>أجمل الحفلات الرمضانية للأطفال مع أجواء روحانية وفرح 🌟</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/share/18ahV3bCRC/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/kidsshow721?igsh=MTkwMHVyOTg2dTNyaw%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
@@ -2234,39 +2868,40 @@
                 </div>
 
                 <div class="footer-col">
-                    <h3>روابط سريعة</h3>
+                    <h3>روابط سريعة 🏃</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="packages.html">الباقات والأسعار</a></li>
-                        <li><a href="gallery.html">معرض الأعمال</a></li>
-                        <li><a href="about.html">من نحن</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="index.html">🏠 الرئيسية</a></li>
+                        <li><a href="packages.html">🎁 الباقات الرمضانية</a></li>
+                        <li><a href="gallery.html">🖼️ معرض الأعمال</a></li>
+                        <li><a href="about.html">👥 من نحن</a></li>
+                        <li><a href="contact.html">📞 اتصل بنا</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h3>خدماتنا</h3>
+                    <h3>خدماتنا الرمضانية 🎪</h3>
                     <ul class="footer-links">
-                        <li><a href="gallery.html">حفلات أعياد الميلاد</a></li>
-                        <li><a href="gallery.html">حفلات السبوع</a></li>
-                        <li><a href="gallery.html">الحفلات الخاصة</a></li>
-                        <li><a href="gallery.html">خدمات الديكور</a></li>
+                        <li><a href="gallery.html">🎈 حفلات رمضان للأطفال</a></li>
+                        <li><a href="gallery.html">🍼 حفلات السبوع الرمضانية</a></li>
+                        <li><a href="gallery.html">🕌 حفلات الإفطار الرمضانية</a></li>
+                        <li><a href="gallery.html">✨ خدمات الديكور الرمضاني</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h3>اتصل بنا</h3>
-                    <p><i class="fas fa-map-marker-alt"></i>القاهرة</p>
-                    <p><i class="fas fa-phone"></i><a href="tel:01100624481"  class="phone-number">01100624481</a></p>
-                    <p><i class="fas fa-phone"></i><a href="tel:01013272894"  class="phone-number">01013272894</a></p>
-                    <p><i class="fas fa-phone"></i><a href="tel:01223461549"  class="phone-number">01223461549</a></p>
+                    <h3>اتصل بنا 📞</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> القاهرة</p>
+                    <p><i class="fas fa-phone"></i><a href="tel:01100624481" class="phone-number">01100624481</a></p>
+                    <p><i class="fas fa-phone"></i><a href="tel:01013272894" class="phone-number">01013272894</a></p>
+                    <p><i class="fas fa-phone"></i><a href="tel:01223461549" class="phone-number">01223461549</a></p>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2026 KIDS SHOW. جميع الحقوق محفوظة</p>
+                <p>&copy; 2026 KIDS SHOW. جميع الحقوق محفوظة | تصميم بمناسبة شهر رمضان الكريم</p>
+                <p class="ramadan-message">🌙 رمضان كريم وكل عام وأنتم بخير 🌙 تقبل الله منا ومنكم صالح الأعمال 🌙</p>
             </div>
         </div>
     </footer>
@@ -2284,12 +2919,12 @@
             });
 
             // Header Scroll Effect
+            const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
-                const header = document.querySelector('header');
-                if (window.scrollY > 100) {
-                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
                 } else {
-                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                    header.classList.remove('header-scrolled');
                 }
             });
 
@@ -2496,12 +3131,47 @@
                     }, index * 100);
                 });
             }, 500);
+
+            // Create Ramadan Lanterns
+            function createLanterns(containerId, count, size = 'normal') {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                
+                for (let i = 0; i < count; i++) {
+                    const lantern = document.createElement('div');
+                    lantern.className = size === 'small' ? 'banner-lantern' : 'lantern';
+                    
+                    // Random position
+                    const left = Math.random() * 90 + 5;
+                    const top = Math.random() * 80 + 10;
+                    const delay = Math.random() * 5;
+                    const duration = 6 + Math.random() * 4;
+                    
+                    lantern.style.left = `${left}%`;
+                    lantern.style.top = `${top}%`;
+                    lantern.style.animationDelay = `${delay}s`;
+                    lantern.style.animationDuration = `${duration}s`;
+                    
+                    if (size !== 'small') {
+                        // Add decoration
+                        const decoration = document.createElement('div');
+                        decoration.className = 'lantern-decoration';
+                        lantern.appendChild(decoration);
+                    }
+                    
+                    container.appendChild(lantern);
+                }
+            }
+            
+            // Create lanterns for different sections
+            createLanterns('lanterns-container', 8);
+            createLanterns('bannerLanterns', 4, 'small');
+            
+            // Add Ramadan greeting in console
+            console.log('%c🌙 رمضان كريم 🌙%c\nكل عام وأنتم بخير\nاستمتع بتصفح معرض أعمالنا الرمضانية', 
+                'color: #D4AF37; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px #FFD700;', 
+                'color: #2E8B57; font-size: 16px;');
         });
     </script>
 </body>
-
 </html>
-
-
-
-
