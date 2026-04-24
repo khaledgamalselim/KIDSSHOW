@@ -1,6 +1,4 @@
-    <!DOCTYPE html>
-    <html lang="ar" dir="rtl">
-    <head>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>KIDS SHOW | مكتب حفلات رمضان</title>
@@ -111,11 +109,11 @@
                     inset 0 0 30px rgba(255, 255, 255, 0.5);
                 animation: moonGlow 6s infinite alternate ease-in-out;
                 z-index: -1;
-            }
+            
 
-            .moon::before {
+            .mon::before 
                 content: '';
-                position: absolute;
+                positionabsolute;
                 top: 20px;
                 left: 40px;
                 width: 40px;
@@ -133,9 +131,9 @@
                 height: 20px;
                 background: rgba(139, 69, 19, 0.2);
                 border-radius: 50%;
-            }
+            
 
-            .stars {
+            .st
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -529,7 +527,7 @@
                 height: 100%;
                 background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23FFD700' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
                 opacity: 0.3;
-            }
+            
 
             .hero::after {
                 content: '';
@@ -1860,98 +1858,4 @@
                             }, 300);
                         });
 
-                        lightbox.addEventListener('click', function(e) {
-                            if (e.target === lightbox) {
-                                lightbox.style.opacity = '0';
-                                setTimeout(() => {
-                                    document.body.removeChild(lightbox);
-                                }, 300);
-                            }
-                        });
-                    });
-                });
-
-                // Scroll Animation
-                const fadeElements = document.querySelectorAll('.fade-in');
-                
-                const fadeInOnScroll = function() {
-                    fadeElements.forEach(element => {
-                        const elementTop = element.getBoundingClientRect().top;
-                        const elementVisible = 150;
                         
-                        if (elementTop < window.innerHeight - elementVisible) {
-                            element.classList.add('visible');
-                        }
-                    });
-                };
-                
-                window.addEventListener('scroll', fadeInOnScroll);
-                fadeInOnScroll(); // Check on load
-
-                // Create Ramadan Lanterns
-                function createLanterns(containerId, count, size = 'normal') {
-                    const container = document.getElementById(containerId);
-                    if (!container) return;
-                    
-                    for (let i = 0; i < count; i++) {
-                        const lantern = document.createElement('div');
-                        lantern.className = size === 'small' ? 'banner-lantern' : 'lantern';
-                        
-                        // Random position
-                        const left = Math.random() * 90 + 5;
-                        const top = Math.random() * 80 + 10;
-                        const delay = Math.random() * 5;
-                        const duration = 6 + Math.random() * 4;
-                        
-                        lantern.style.left = `${left}%`;
-                        lantern.style.top = `${top}%`;
-                        lantern.style.animationDelay = `${delay}s`;
-                        lantern.style.animationDuration = `${duration}s`;
-                        
-                        if (size !== 'small') {
-                            // Add decoration
-                            const decoration = document.createElement('div');
-                            decoration.className = 'lantern-decoration';
-                            lantern.appendChild(decoration);
-                            
-                            // Add light effect
-                            const light = document.createElement('div');
-                            light.className = 'lantern-light';
-                            lantern.appendChild(light);
-                        }
-                        
-                        container.appendChild(lantern);
-                    }
-                }
-                
-                // Create lanterns for different sections
-                createLanterns('lanterns-container', 10);
-                createLanterns('bannerLanterns', 6, 'small');
-                
-                // Add floating lanterns to banner
-                const banner = document.querySelector('.ramadan-banner');
-                setInterval(() => {
-                    const lantern = document.createElement('div');
-                    lantern.className = 'banner-lantern';
-                    lantern.style.left = `${Math.random() * 100}%`;
-                    lantern.style.top = '-50px';
-                    lantern.style.animation = `floatLeft ${15 + Math.random() * 10}s linear`;
-                    
-                    banner.querySelector('.banner-lanterns').appendChild(lantern);
-                    
-                    // Remove after animation
-                    setTimeout(() => {
-                        if (lantern.parentNode) {
-                            lantern.parentNode.removeChild(lantern);
-                        }
-                    }, 25000);
-                }, 3000);
-                
-                // Add Ramadan greeting in console
-                console.log('%c🌙 رمضان كريم 🌙%c\nكل عام وأنتم بخير\nتقبل الله منا ومنكم صالح الأعمال', 
-                    'color: #D4AF37; font-size: 24px; font-weight: bold; text-shadow: 0 0 10px #FFD700;', 
-                    'color: #2E8B57; font-size: 16px;');
-            });
-        </script>
-    </body>
-    </html>
